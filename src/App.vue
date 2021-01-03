@@ -13,5 +13,5 @@ export default defineComponent({
   components: {
     NavBar
   }
-});
+})
 </script>
