@@ -6,6 +6,7 @@ Examples
 * Todo (CRUD)
 * Dynamic layout(component)
 * Counter
+* Form input bindings
 
 ## Project setup
 ```
