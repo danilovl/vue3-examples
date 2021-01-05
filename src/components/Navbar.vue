@@ -14,6 +14,9 @@
         <li class="nav-item">
           <router-link :to="{name: 'counter'}">Counter</router-link>
         </li>
+        <li class="nav-item">
+          <router-link :to="{name: 'form_input_bindings'}">Form Input Bindings</router-link>
+        </li>
       </ul>
     </div>
   </nav>

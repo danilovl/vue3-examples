@@ -85,6 +85,15 @@ const routes: Array<RouteRecordRaw> = [
         },
         component: () => import('@/views/Counter.vue')
     },
+    {
+        path: '/form-input-bindings',
+        name: 'form_input_bindings',
+        meta: {
+            display: true,
+            title: 'Form Input Bindings'
+        },
+        component: () => import('@/views/FormInput.vue')
+    },
 ]
 
 const router = createRouter({
