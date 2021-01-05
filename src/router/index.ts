@@ -90,7 +90,7 @@ const routes: Array<RouteRecordRaw> = [
         name: 'form_input_bindings',
         meta: {
             display: true,
-            title: 'Form Input Bindings'
+            title: 'Form input bindings'
         },
         component: () => import('@/views/FormInput.vue')
     },
