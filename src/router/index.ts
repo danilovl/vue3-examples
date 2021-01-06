@@ -102,6 +102,15 @@ const routes: Array<RouteRecordRaw> = [
             title: 'Lifecycle hooks'
         },
         component: () => import('@/views/LifecycleHooks.vue')
+    },
+    {
+        path: '/axios',
+        name: 'axios',
+        meta: {
+            display: true,
+            title: 'Axios'
+        },
+        component: () => import('@/views/Axios.vue')
     }
 ]
 

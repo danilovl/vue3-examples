@@ -8,6 +8,7 @@ Examples
 * Counter
 * Form input bindings
 * Lifecycle hooks
+* Axios
 
 ## Project setup
 ```
