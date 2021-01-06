@@ -17,6 +17,9 @@
         <li class="nav-item">
           <router-link :to="{name: 'form_input_bindings'}">Form input bindings</router-link>
         </li>
+        <li class="nav-item">
+          <router-link :to="{name: 'lifecycle_hooks'}">Lifecycle hooks</router-link>
+        </li>
       </ul>
     </div>
   </nav>

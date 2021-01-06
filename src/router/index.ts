@@ -94,6 +94,15 @@ const routes: Array<RouteRecordRaw> = [
         },
         component: () => import('@/views/FormInput.vue')
     },
+    {
+        path: '/lifecycle-hooks',
+        name: 'lifecycle_hooks',
+        meta: {
+            display: true,
+            title: 'Lifecycle hooks'
+        },
+        component: () => import('@/views/LifecycleHooks.vue')
+    }
 ]
 
 const router = createRouter({

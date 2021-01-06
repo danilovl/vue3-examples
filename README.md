@@ -7,6 +7,7 @@ Examples
 * Dynamic layout(component)
 * Counter
 * Form input bindings
+* Lifecycle hooks
 
 ## Project setup
 ```
