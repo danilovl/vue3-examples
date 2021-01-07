@@ -111,6 +111,15 @@ const routes: Array<RouteRecordRaw> = [
             title: 'Axios'
         },
         component: () => import('@/views/Axios.vue')
+    },
+    {
+        path: '/teleport',
+        name: 'teleport',
+        meta: {
+            display: true,
+            title: 'Teleport '
+        },
+        component: () => import('@/views/Teleport.vue')
     }
 ]
 

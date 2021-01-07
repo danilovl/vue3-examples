@@ -9,6 +9,7 @@ Examples
 * Form input bindings
 * Lifecycle hooks
 * Axios
+* Teleport
 
 ## Project setup
 ```

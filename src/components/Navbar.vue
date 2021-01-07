@@ -23,6 +23,9 @@
         <li class="nav-item">
           <router-link :to="{name: 'axios'}">Axios</router-link>
         </li>
+        <li class="nav-item">
+          <router-link :to="{name: 'teleport'}">Teleport</router-link>
+        </li>
       </ul>
     </div>
   </nav>
