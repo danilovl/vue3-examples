@@ -6,6 +6,7 @@ const routes: Array<RouteRecordRaw> = [
         path: '/',
         name: 'home',
         meta: {
+            position: 0,
             display: true,
             title: 'Home'
         },
@@ -14,12 +15,17 @@ const routes: Array<RouteRecordRaw> = [
     {
         path: '/todo',
         name: 'todo',
+        meta: {
+            display: false,
+            title: 'Todo'
+        },
         component: () => import('@/layouts/DefaultLayout.vue'),
         children: [
             {
                 path: 'list',
                 name: 'todo_list',
                 meta: {
+                    position: 2,
                     display: true,
                     title: 'Todo list'
                 },
@@ -29,7 +35,7 @@ const routes: Array<RouteRecordRaw> = [
                 path: 'detail/:id(\\d+)',
                 name: 'todo_detail',
                 meta: {
-                    display: true,
+                    display: false,
                     title: 'Todo detail'
                 },
                 component: () => import('@/views/todo/Detail.vue')
@@ -38,7 +44,7 @@ const routes: Array<RouteRecordRaw> = [
                 path: 'edit/:id(\\d+)',
                 name: 'todo_edit',
                 meta: {
-                    display: true,
+                    display: false,
                     title: 'Todo edit'
                 },
                 component: () => import('@/views/todo/Edit.vue')
@@ -49,6 +55,7 @@ const routes: Array<RouteRecordRaw> = [
         path: '/dynamic-layout',
         name: 'dynamic_layout',
         meta: {
+            position: 3,
             display: true,
             title: 'Dynamic layout'
         },
@@ -58,7 +65,7 @@ const routes: Array<RouteRecordRaw> = [
                 path: 'blog',
                 name: 'dynamic_layout_blog',
                 meta: {
-                    display: true,
+                    display: false,
                     title: 'Blog layout',
                     layout: 'blog'
                 },
@@ -68,7 +75,7 @@ const routes: Array<RouteRecordRaw> = [
                 path: 'simple',
                 name: 'dynamic_layout_simple',
                 meta: {
-                    display: true,
+                    display: false,
                     title: 'Simple layout',
                     layout: 'simple'
                 },
@@ -80,6 +87,7 @@ const routes: Array<RouteRecordRaw> = [
         path: '/counter',
         name: 'counter',
         meta: {
+            position: 4,
             display: true,
             title: 'Counter'
         },
@@ -89,6 +97,7 @@ const routes: Array<RouteRecordRaw> = [
         path: '/form-input-bindings',
         name: 'form_input_bindings',
         meta: {
+            position: 5,
             display: true,
             title: 'Form input bindings'
         },
@@ -98,6 +107,7 @@ const routes: Array<RouteRecordRaw> = [
         path: '/lifecycle-hooks',
         name: 'lifecycle_hooks',
         meta: {
+            position: 6,
             display: true,
             title: 'Lifecycle hooks'
         },
@@ -107,6 +117,7 @@ const routes: Array<RouteRecordRaw> = [
         path: '/axios',
         name: 'axios',
         meta: {
+            position: 7,
             display: true,
             title: 'Axios'
         },
@@ -116,8 +127,9 @@ const routes: Array<RouteRecordRaw> = [
         path: '/teleport',
         name: 'teleport',
         meta: {
+            position: 8,
             display: true,
-            title: 'Teleport '
+            title: 'Teleport'
         },
         component: () => import('@/views/Teleport.vue')
     }
