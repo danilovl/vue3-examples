@@ -94,10 +94,20 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import('@/views/Counter.vue')
     },
     {
+        path: '/counter-mixins',
+        name: 'counter_mixins',
+        meta: {
+            position: 5,
+            display: true,
+            title: 'Counter mixins'
+        },
+        component: () => import('@/views/CounterMixins.vue')
+    },
+    {
         path: '/form-input-bindings',
         name: 'form_input_bindings',
         meta: {
-            position: 5,
+            position: 6,
             display: true,
             title: 'Form input bindings'
         },
@@ -107,7 +117,7 @@ const routes: Array<RouteRecordRaw> = [
         path: '/lifecycle-hooks',
         name: 'lifecycle_hooks',
         meta: {
-            position: 6,
+            position: 7,
             display: true,
             title: 'Lifecycle hooks'
         },
@@ -117,7 +127,7 @@ const routes: Array<RouteRecordRaw> = [
         path: '/axios',
         name: 'axios',
         meta: {
-            position: 7,
+            position: 8,
             display: true,
             title: 'Axios'
         },
@@ -127,7 +137,7 @@ const routes: Array<RouteRecordRaw> = [
         path: '/teleport',
         name: 'teleport',
         meta: {
-            position: 8,
+            position: 9,
             display: true,
             title: 'Teleport'
         },

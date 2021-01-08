@@ -6,6 +6,7 @@ Examples
 * Todo (CRUD)
 * Dynamic layout(component)
 * Counter
+* Counter mixins
 * Form input bindings
 * Lifecycle hooks
 * Axios
