@@ -1,4 +1,8 @@
 <template>
+  <div>
+    <h1>Dynamic layout</h1>
+  </div>
+
   <ul>
     <li class="nav-item">
       <router-link :to="{name: 'dynamic_layout_simple'}">simple template</router-link>
@@ -63,10 +67,16 @@ import {defineComponent, computed, reactive, toRef} from 'vue'
 import {RouteMeta, useRoute} from 'vue-router'
 import SimpleLayout from '@/views/dynamic-layout/SimpleLayout.vue'
 import BlogLayout from '@/views/dynamic-layout/BlogLayout.vue'
+import {ComputedRef} from "@vue/reactivity";
 
 interface State {
   metas: RouteMeta;
   layout: string;
+}
+
+interface StateReactive {
+  metas: RouteMeta;
+  layout: ComputedRef;
 }
 
 export default defineComponent({
@@ -77,7 +87,7 @@ export default defineComponent({
   setup() {
     const meta = toRef(reactive(useRoute()), 'meta')
 
-    const state = reactive({
+    const state = reactive<StateReactive>({
       metas: meta,
       layout: computed<string | null>(() => state.metas.layout !== undefined ? state.metas.layout + '-layout' : null)
     }) as State

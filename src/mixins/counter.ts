@@ -1,4 +1,10 @@
 import {computed, reactive} from 'vue'
+import {ComputedRef} from '@vue/reactivity'
+
+interface StateReactive {
+    count: number;
+    double: ComputedRef;
+}
 
 interface UseCounter {
     state: CounterState;
@@ -11,7 +17,7 @@ interface CounterState {
 }
 
 function useCounter(): UseCounter {
-    const state = reactive({
+    const state = reactive<StateReactive>({
         count: 0,
         double: computed((): number => state.count * 2)
     }) as CounterState

@@ -1,4 +1,7 @@
 <template>
+  <div>
+    <h1>Provide and inject</h1>
+  </div>
   <div class="col-md-12">
     <div class="card mb-4 box-shadow">
       <h5 class="card-header">Parent component</h5>
@@ -13,7 +16,7 @@
 
 <script lang="ts">
 import ChildComponent from '@/views/provide-and-inject/ChildComponent.vue'
-import {Ref, ref, provide, readonly} from 'vue'
+import {Ref, ref, provide, readonly, defineComponent} from 'vue'
 
 interface SetupData {
   injectMessage: Ref;
@@ -26,7 +29,7 @@ interface ProvideState {
 
 export const MessageUniqueIdentifierSymbol = Symbol('User settings state provider identifier')
 
-export default {
+export default defineComponent({
   name: 'ProvideAndInject',
   components: {
     ChildComponent
@@ -46,5 +49,5 @@ export default {
       subChildComponentMessage: 'Sub child component inject message'
     }
   }
-}
+})
 </script>

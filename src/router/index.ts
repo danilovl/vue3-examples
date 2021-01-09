@@ -152,7 +152,7 @@ const routes: Array<RouteRecordRaw> = [
             title: 'Suspense'
         },
         component: () => import('@/views/suspense/Suspense.vue')
-    } ,
+    },
     {
         path: '/provide-and-inject',
         name: 'provide_inject',
@@ -162,6 +162,16 @@ const routes: Array<RouteRecordRaw> = [
             title: 'Provide and inject'
         },
         component: () => import('@/views/provide-and-inject/ProvideAndInject.vue')
+    },
+    {
+        path: '/multiple-v-models',
+        name: 'multiple_v_models',
+        meta: {
+            position: 12,
+            display: true,
+            title: 'Multiple v-models'
+        },
+        component: () => import('@/views/multiple-v-models/MultipleModels.vue')
     }
 ]
 

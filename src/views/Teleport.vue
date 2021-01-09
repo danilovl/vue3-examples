@@ -1,4 +1,7 @@
 <template>
+  <div>
+    <h1>Teleport</h1>
+  </div>
   <div class="mt-4">
     <button @click="isModalOpen = true"
             v-if="isModalOpen === false"

@@ -1,4 +1,7 @@
 <template>
+  <div>
+    <h1>Form input bindings</h1>
+  </div>
   <div class="col-md-12">
     <div class="card mb-4 box-shadow">
       <h5 class="card-header">Data message</h5>
@@ -80,6 +83,13 @@
 
 <script lang="ts">
 import {defineComponent, ref, computed, reactive, Ref} from 'vue'
+import {ComputedRef} from '@vue/reactivity'
+
+interface StateReactive {
+  numbers: number[];
+  checkedNumbers: number[];
+  sum: ComputedRef;
+}
 
 interface SumState {
   numbers: number[];
@@ -115,7 +125,7 @@ export default defineComponent({
   setup(): SetupData {
     const refMessage = ref<string | number>('')
 
-    const sumState = reactive({
+    const sumState = reactive<StateReactive>({
       numbers: Array.from(Array(10).keys()),
       checkedNumbers: [],
       sum: computed(() => sumState.checkedNumbers.reduce((a: number, b: number): number => a + b, 0))
@@ -123,7 +133,7 @@ export default defineComponent({
 
     return {
       refMessage,
-      sumState,
+      sumState
     }
   }
 })

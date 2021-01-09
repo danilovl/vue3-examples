@@ -1,5 +1,5 @@
 <template>
-  <div class="about">
+  <div>
     <h1>Counter</h1>
     <button @click="increment">
       Count is: {{ state.count }}, double is: {{ state.double }}
@@ -9,6 +9,12 @@
 
 <script lang="ts">
 import {defineComponent, reactive, computed} from 'vue'
+import {ComputedRef} from '@vue/reactivity'
+
+interface StateReactive {
+  count: number;
+  double: ComputedRef;
+}
 
 interface CounterState {
   count: number;
@@ -23,9 +29,9 @@ interface SetupData {
 export default defineComponent({
   name: 'Counter',
   setup(): SetupData {
-    const state = reactive({
+    const state = reactive<StateReactive>({
       count: 0,
-      double: computed(() => state.count * 2)
+      double: computed((): number => state.count * 2)
     }) as CounterState
 
     function increment() {

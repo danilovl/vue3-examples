@@ -1,5 +1,5 @@
 <template>
-  <div class="about">
+  <div>
     <h1>Counter mixins</h1>
     <button @click="increment">
       Count is: {{ state.count }}, double is: {{ state.double }}

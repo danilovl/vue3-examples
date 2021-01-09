@@ -13,6 +13,7 @@ Examples
 * Teleport
 * Suspense
 * Provide and inject
+* Multiple v-models
 
 ## Project setup
 ```

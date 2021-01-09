@@ -1,4 +1,7 @@
 <template>
+  <div>
+    <h1>Suspense</h1>
+  </div>
   <div class="col-md-12">
     <div class="card mb-4 box-shadow">
       <h5 class="card-header">Suspense</h5>
