@@ -12,6 +12,7 @@ Examples
 * Axios
 * Teleport
 * Suspense
+* Provide and inject
 
 ## Project setup
 ```

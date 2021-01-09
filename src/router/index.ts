@@ -152,6 +152,16 @@ const routes: Array<RouteRecordRaw> = [
             title: 'Suspense'
         },
         component: () => import('@/views/suspense/Suspense.vue')
+    } ,
+    {
+        path: '/provide-and-inject',
+        name: 'provide_inject',
+        meta: {
+            position: 11,
+            display: true,
+            title: 'Provide and inject'
+        },
+        component: () => import('@/views/provide-and-inject/ProvideAndInject.vue')
     }
 ]
 

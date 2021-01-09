@@ -1,8 +1,8 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-light mb-2">
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li v-for="route in routes" :key="route.name" class="nav-item">
+      <ul class="navbar-nav mr-auto display-block">
+        <li v-for="route in routes" :key="route.name" class="nav-item mb-2">
           <router-link :to="{name: route.name}">{{ route.meta.title }}</router-link>
         </li>
       </ul>
