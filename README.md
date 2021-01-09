@@ -11,6 +11,7 @@ Examples
 * Lifecycle hooks
 * Axios
 * Teleport
+* Suspense
 
 ## Project setup
 ```

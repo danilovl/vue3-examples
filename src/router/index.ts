@@ -142,6 +142,16 @@ const routes: Array<RouteRecordRaw> = [
             title: 'Teleport'
         },
         component: () => import('@/views/Teleport.vue')
+    },
+    {
+        path: '/suspense',
+        name: 'suspense',
+        meta: {
+            position: 10,
+            display: true,
+            title: 'Suspense'
+        },
+        component: () => import('@/views/suspense/Suspense.vue')
     }
 ]
 

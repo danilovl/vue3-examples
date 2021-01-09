@@ -23,10 +23,12 @@
 <script lang="ts">
 import {
   defineComponent,
-  onMounted, Ref,
+  onMounted,
+  Ref,
   ref
 } from 'vue'
 import axios, {AxiosResponse} from 'axios'
+import {sleep} from '@/helpers'
 
 interface SetupData {
   isLoading: Ref;
@@ -42,8 +44,6 @@ export default defineComponent({
     const isLoading = ref<boolean>(true)
     const processInformation = ref<string>('loading data')
     const todos = ref<AxiosResponse>()
-
-    const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
 
     onMounted(() => {
       axios
