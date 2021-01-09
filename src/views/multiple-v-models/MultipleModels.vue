@@ -24,7 +24,8 @@
 
 <script lang="ts">
 import FormModels from '@/views/multiple-v-models/FormModels.vue'
-import {defineComponent, reactive, Ref} from 'vue';
+import {defineComponent, reactive} from 'vue'
+import {ComputedRef} from '@vue/reactivity'
 
 interface Address {
   name: string;
@@ -35,7 +36,7 @@ interface Address {
 }
 
 interface SetupData {
-  address: Ref;
+  address: Address;
 }
 
 export default defineComponent({
@@ -50,7 +51,7 @@ export default defineComponent({
       streetNumber: '',
       town: '',
       homeAddress: false
-    })
+    }) as Address
 
     return {
       address
