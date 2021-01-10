@@ -25,7 +25,6 @@
 <script lang="ts">
 import FormModels from '@/views/multiple-v-models/FormModels.vue'
 import {defineComponent, reactive} from 'vue'
-import {ComputedRef} from '@vue/reactivity'
 
 interface Address {
   name: string;

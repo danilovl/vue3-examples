@@ -14,6 +14,7 @@ Examples
 * Suspense
 * Provide and inject
 * Multiple v-models
+* Vee validate form
 
 ## Project setup
 ```
