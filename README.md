@@ -15,6 +15,7 @@ Examples
 * Provide and inject
 * Multiple v-models
 * Vee validate form
+* Filters
 
 ## Project setup
 ```

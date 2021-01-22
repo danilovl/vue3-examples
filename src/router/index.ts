@@ -172,7 +172,7 @@ const routes: Array<RouteRecordRaw> = [
             title: 'Multiple v-models'
         },
         component: () => import('@/views/multiple-v-models/MultipleModels.vue')
-    } ,
+    },
     {
         path: '/vee-validate',
         name: 'vee_validate',
@@ -182,6 +182,16 @@ const routes: Array<RouteRecordRaw> = [
             title: 'Vee validate'
         },
         component: () => import('@/views/VeeValidate.vue')
+    },
+    {
+        path: '/filters',
+        name: 'filters',
+        meta: {
+            position: 14,
+            display: true,
+            title: 'Filters'
+        },
+        component: () => import('@/views/Filters.vue')
     }
 ]
 
