@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Provide and inject</h1>
+    <h1>{{ meta.title }}</h1>
   </div>
   <div class="col-md-12">
     <div class="card mb-4 box-shadow">
@@ -17,9 +17,12 @@
 <script lang="ts">
 import ChildComponent from '@/views/provide-and-inject/ChildComponent.vue'
 import {Ref, ref, provide, readonly, defineComponent} from 'vue'
+import useRouteMeta from '@/hooks/useRouteMeta'
+import RouteMeta from '@/interfaces/routeMeta'
 
 interface SetupData {
   injectMessage: Ref;
+  meta: RouteMeta;
 }
 
 interface ProvideState {
@@ -38,9 +41,11 @@ export default defineComponent({
     const injectMessage = ref<string | number>('')
 
     provide<Ref>(MessageUniqueIdentifierSymbol, readonly(injectMessage))
+    const meta = useRouteMeta()
 
     return {
-      injectMessage
+      injectMessage,
+      meta
     }
   },
   provide(): ProvideState {

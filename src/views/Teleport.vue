@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Teleport</h1>
+    <h1>{{ meta.title }}</h1>
   </div>
   <div class="mt-4">
     <button @click="isModalOpen = true"
@@ -45,9 +45,12 @@
 
 <script lang="ts">
 import {defineComponent, Ref, ref} from 'vue'
+import useRouteMeta from '@/hooks/useRouteMeta'
+import RouteMeta from '@/interfaces/routeMeta'
 
 interface SetupData {
   isModalOpen: Ref;
+  meta: RouteMeta;
 }
 
 export default defineComponent({
@@ -55,8 +58,11 @@ export default defineComponent({
   setup(): SetupData {
     const isModalOpen = ref<boolean>(false)
 
+    const meta = useRouteMeta()
+
     return {
-      isModalOpen
+      isModalOpen,
+      meta
     }
   }
 })

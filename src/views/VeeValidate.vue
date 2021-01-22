@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Vee validate</h1>
+    <h1>{{ meta.title }}</h1>
   </div>
   <div class="row justify-content-center">
     <div class="col-md-4">
@@ -72,6 +72,8 @@
 import {defineComponent, reactive, Ref, watch} from 'vue'
 import {useField} from 'vee-validate'
 import {ComputedRef} from '@vue/reactivity'
+import useRouteMeta from '@/hooks/useRouteMeta'
+import RouteMeta from '@/interfaces/routeMeta'
 
 interface Address {
   name: string | null;
@@ -130,6 +132,7 @@ interface SetupData {
   addressErrorMessage: AddressErrorMessage;
   isFormValid: Function;
   fieldValidationClass: Function;
+  meta: RouteMeta;
 }
 
 export default defineComponent({
@@ -205,11 +208,14 @@ export default defineComponent({
       return true
     }
 
+    const meta = useRouteMeta()
+
     return {
       isFormValid,
       address,
       addressErrorMessage,
-      fieldValidationClass
+      fieldValidationClass,
+      meta
     }
   }
 })

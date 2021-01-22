@@ -1,17 +1,17 @@
 import {computed, reactive} from 'vue'
 import {ComputedRef} from '@vue/reactivity'
 
-interface StateReactive {
+export interface StateReactive {
     count: number;
     double: ComputedRef;
 }
 
-interface UseCounter {
+export interface UseCounter {
     state: CounterState;
     increment: Function;
 }
 
-interface CounterState {
+export interface CounterState {
     count: number;
     double: number;
 }

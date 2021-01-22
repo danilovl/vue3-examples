@@ -9,13 +9,26 @@
 
 <script lang="ts">
 import {defineComponent} from 'vue'
-import Counter from '@/mixins/counter'
+import Counter, {CounterState} from '@/mixins/counter'
+import useRouteMeta from '@/hooks/useRouteMeta'
+import RouteMeta from '@/interfaces/routeMeta'
+
+interface SetupData {
+  state: CounterState;
+  increment: Function;
+  meta: RouteMeta;
+}
 
 export default defineComponent({
   name: 'CounterMixins',
   // mixins: [Counter], this not working with Composition API
   setup() {
-    return {...Counter()}
+    const meta = useRouteMeta()
+
+    return {
+      ...Counter(),
+      meta
+    }
   }
 })
 </script>

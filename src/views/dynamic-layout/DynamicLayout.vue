@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Dynamic layout</h1>
+    <h1>{{ meta.title }}</h1>
   </div>
 
   <ul>
@@ -63,11 +63,17 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, computed, reactive, toRef} from 'vue'
-import {RouteMeta, useRoute} from 'vue-router'
+import {defineComponent, computed, reactive} from 'vue'
+import {RouteMeta} from 'vue-router'
 import SimpleLayout from '@/views/dynamic-layout/SimpleLayout.vue'
 import BlogLayout from '@/views/dynamic-layout/BlogLayout.vue'
-import {ComputedRef} from "@vue/reactivity";
+import {ComputedRef} from '@vue/reactivity'
+import useRouteMeta from '@/hooks/useRouteMeta'
+
+interface SetupData {
+  state: State;
+  meta: RouteMeta;
+}
 
 interface State {
   metas: RouteMeta;
@@ -84,16 +90,17 @@ export default defineComponent({
     SimpleLayout,
     BlogLayout
   },
-  setup() {
-    const meta = toRef(reactive(useRoute()), 'meta')
+  setup(): SetupData {
+    const meta = useRouteMeta()
 
     const state = reactive<StateReactive>({
-      metas: meta,
+      metas: meta.metaRef,
       layout: computed<string | null>(() => state.metas.layout !== undefined ? state.metas.layout + '-layout' : null)
     }) as State
 
     return {
-      state
+      state,
+      meta
     }
   }
 })

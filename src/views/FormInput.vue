@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Form input bindings</h1>
+    <h1>{{ meta.title }}</h1>
   </div>
   <div class="col-md-12">
     <div class="card mb-4 box-shadow">
@@ -84,6 +84,8 @@
 <script lang="ts">
 import {defineComponent, ref, computed, reactive, Ref} from 'vue'
 import {ComputedRef} from '@vue/reactivity'
+import useRouteMeta from '@/hooks/useRouteMeta'
+import RouteMeta from '@/interfaces/routeMeta'
 
 interface StateReactive {
   numbers: number[];
@@ -100,6 +102,7 @@ interface SumState {
 interface SetupData {
   refMessage: Ref;
   sumState: SumState;
+  meta: RouteMeta;
 }
 
 export default defineComponent({
@@ -131,9 +134,12 @@ export default defineComponent({
       sum: computed(() => sumState.checkedNumbers.reduce((a: number, b: number): number => a + b, 0))
     }) as SumState
 
+    const meta = useRouteMeta()
+
     return {
       refMessage,
-      sumState
+      sumState,
+      meta
     }
   }
 })

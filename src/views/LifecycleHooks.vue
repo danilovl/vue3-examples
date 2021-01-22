@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Lifecycle hooks</h1>
+    <h1>{{ meta.title }}</h1>
   </div>
   <div class="col-md-12">
     <div class="card mb-4 box-shadow">
@@ -24,6 +24,12 @@ import {
   onUpdated,
   onUnmounted
 } from 'vue'
+import useRouteMeta from '@/hooks/useRouteMeta'
+import RouteMeta from '@/interfaces/routeMeta'
+
+interface SetupData {
+  meta: RouteMeta;
+}
 
 export default defineComponent({
   name: 'LifecycleHooks',
@@ -32,7 +38,7 @@ export default defineComponent({
       dataMessage: ''
     }
   },
-  setup(): void {
+  setup(): SetupData {
     onBeforeMount(() => {
       console.log('onBeforeMount')
     })
@@ -60,6 +66,12 @@ export default defineComponent({
     onDeactivated(() => {
       console.log('onDeactivated')
     })
+
+    const meta = useRouteMeta()
+
+    return {
+      meta
+    }
   }
 })
 </script>

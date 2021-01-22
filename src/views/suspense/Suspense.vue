@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Suspense</h1>
+    <h1>{{ meta.title }}</h1>
   </div>
   <div class="col-md-12">
     <div class="card mb-4 box-shadow">
@@ -19,11 +19,24 @@
 
 <script lang="ts">
 import {defineComponent, defineAsyncComponent} from 'vue'
+import useRouteMeta from '@/hooks/useRouteMeta'
+import RouteMeta from '@/interfaces/routeMeta'
+
+interface SetupData {
+  meta: RouteMeta;
+}
 
 export default defineComponent({
   name: 'Suspense',
   components: {
     SuspenseAsync: defineAsyncComponent(() => import('@/views/suspense/SuspenseAsync.vue'))
+  },
+  setup(): SetupData {
+    const meta = useRouteMeta()
+
+    return {
+      meta
+    }
   }
 })
 </script>

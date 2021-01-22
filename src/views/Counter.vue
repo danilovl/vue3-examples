@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Counter</h1>
+    <h1>{{ meta.title }}</h1>
     <button @click="increment">
       Count is: {{ state.count }}, double is: {{ state.double }}
     </button>
@@ -10,6 +10,8 @@
 <script lang="ts">
 import {defineComponent, reactive, computed} from 'vue'
 import {ComputedRef} from '@vue/reactivity'
+import useRouteMeta from '@/hooks/useRouteMeta'
+import RouteMeta from '@/interfaces/routeMeta'
 
 interface StateReactive {
   count: number;
@@ -24,6 +26,7 @@ interface CounterState {
 interface SetupData {
   state: CounterState;
   increment: Function;
+  meta: RouteMeta;
 }
 
 export default defineComponent({
@@ -38,9 +41,12 @@ export default defineComponent({
       state.count++
     }
 
+    const meta = useRouteMeta()
+
     return {
       state,
-      increment
+      increment,
+      meta
     }
   }
 })

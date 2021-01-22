@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Multiple v-models</h1>
+    <h1>{{ meta.title }}</h1>
   </div>
   <div class="row justify-content-center">
     <div class="col-md-4">
@@ -25,6 +25,8 @@
 <script lang="ts">
 import FormModels from '@/views/multiple-v-models/FormModels.vue'
 import {defineComponent, reactive} from 'vue'
+import useRouteMeta from '@/hooks/useRouteMeta'
+import RouteMeta from '@/interfaces/routeMeta'
 
 interface Address {
   name: string;
@@ -36,6 +38,7 @@ interface Address {
 
 interface SetupData {
   address: Address;
+  meta: RouteMeta;
 }
 
 export default defineComponent({
@@ -52,8 +55,11 @@ export default defineComponent({
       homeAddress: false
     }) as Address
 
+    const meta = useRouteMeta()
+
     return {
-      address
+      address,
+      meta
     }
   }
 })

@@ -32,12 +32,15 @@ import {
 } from 'vue'
 import axios, {AxiosResponse} from 'axios'
 import {sleep} from '@/helpers'
+import useRouteMeta from '@/hooks/useRouteMeta'
+import RouteMeta from '@/interfaces/routeMeta'
 
 interface SetupData {
   isLoading: Ref;
   processInformation: Ref;
   apiUrl: string;
   todos: Ref;
+  meta: RouteMeta;
 }
 
 export default defineComponent({
@@ -69,11 +72,14 @@ export default defineComponent({
           })
     })
 
+    const meta = useRouteMeta()
+
     return {
       isLoading,
       processInformation,
       apiUrl,
-      todos
+      todos,
+      meta
     }
   }
 })
