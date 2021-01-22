@@ -69,8 +69,9 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, reactive, watch} from 'vue'
+import {defineComponent, reactive, Ref, watch} from 'vue'
 import {useField} from 'vee-validate'
+import {ComputedRef} from '@vue/reactivity'
 
 interface Address {
   name: string | null;
@@ -80,7 +81,26 @@ interface Address {
   homeAddress: boolean;
 }
 
-interface AddressErrorMessage {
+interface AddressRef {
+  name: Ref;
+  addressLine: Ref;
+  streetNumber: Ref;
+  town: Ref;
+  homeAddress: boolean;
+}
+
+interface AddressErrorMessageRef {
+  name: ComputedRef<string>;
+  addressLine: ComputedRef<string>;
+  streetNumber: ComputedRef<string>;
+  town: ComputedRef<string>;
+}
+
+interface AddressErrorMessageKeys {
+  [key: string]: string | null;
+}
+
+interface AddressErrorMessage extends AddressErrorMessageKeys {
   name: string | null;
   addressLine: string | null;
   streetNumber: string | null;
@@ -88,6 +108,17 @@ interface AddressErrorMessage {
 }
 
 interface StartTyping {
+  name: boolean;
+  addressLine: boolean;
+  streetNumber: boolean;
+  town: boolean;
+}
+
+interface StartTypingKeys {
+  [key: string]: boolean;
+}
+
+interface StartTyping extends StartTypingKeys {
   name: boolean;
   addressLine: boolean;
   streetNumber: boolean;
@@ -128,7 +159,7 @@ export default defineComponent({
     const {value: streetNumber, errorMessage: errorMessageStreetNumber} = useField('streetNumber', validate)
     const {value: town, errorMessage: errorMessageTown} = useField('town', validate)
 
-    const address = reactive<Address>({
+    const address = reactive<AddressRef>({
       name: name,
       addressLine: addressLine,
       streetNumber: streetNumber,
@@ -149,14 +180,14 @@ export default defineComponent({
       startTyping.town = true
     })
 
-    const addressErrorMessage = reactive<AddressErrorMessage>({
+    const addressErrorMessage = reactive<AddressErrorMessageRef>({
       name: errorMessageName,
       addressLine: errorMessageAddressLine,
       streetNumber: errorMessageStreetNumber,
       town: errorMessageTown,
     }) as AddressErrorMessage
 
-    const fieldValidationClass = function (type: string | undefined): string | null {
+    const fieldValidationClass = function (type: string): string | null {
       if (!startTyping[type]) {
         return null
       }
