@@ -40,7 +40,7 @@ export default defineComponent({
       }
     }
 
-    const toUpperCase = function toUpperCase(string: string): string {
+    const toUpperCase = function (string: string): string {
       return string.toUpperCase()
     }
 
