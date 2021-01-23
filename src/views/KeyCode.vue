@@ -30,7 +30,7 @@ interface SetupData {
 }
 
 export default defineComponent({
-  name: 'KeyCodeModifiers',
+  name: 'KeyCode',
   setup(): SetupData {
     const eventsType: Array<object> = []
     const events = reactive(eventsType)
