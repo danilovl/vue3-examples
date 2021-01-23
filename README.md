@@ -16,6 +16,7 @@ Examples
 * Multiple v-models
 * Vee validate form
 * Filters
+* Key code
 
 ## Project setup
 ```

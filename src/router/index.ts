@@ -192,6 +192,16 @@ const routes: Array<RouteRecordRaw> = [
             title: 'Filters'
         },
         component: () => import('@/views/Filters.vue')
+    },
+    {
+        path: '/key-code',
+        name: 'key_code',
+        meta: {
+            position: 15,
+            display: true,
+            title: 'Key code'
+        },
+        component: () => import('@/views/KeyCode.vue')
     }
 ]
 
