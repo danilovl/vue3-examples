@@ -17,6 +17,7 @@ Examples
 * Vee validate form
 * Filters
 * Key code
+* Emit
 
 ## Project setup
 ```
