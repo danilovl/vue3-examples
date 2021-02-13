@@ -10,13 +10,6 @@
 
 <script lang="ts">
 import {defineComponent} from 'vue'
-import RouteMeta from '@/interfaces/routeMeta'
-
-interface SetupData {
-  events: Array<object>;
-  keyCodeEvent: Function;
-  meta: RouteMeta;
-}
 
 export default defineComponent({
   name: 'AddToCart',
