@@ -8,46 +8,46 @@
 </template>
 
 <script lang="ts">
+import type {ComputedRef} from 'vue'
+import type RouteMeta from '@/interfaces/routeMeta'
 import {defineComponent, reactive, computed} from 'vue'
-import {ComputedRef} from '@vue/reactivity'
 import useRouteMeta from '@/hooks/useRouteMeta'
-import RouteMeta from '@/interfaces/routeMeta'
 
 interface StateReactive {
-  count: number;
-  double: ComputedRef;
+    count: number;
+    double: ComputedRef;
 }
 
 interface CounterState {
-  count: number;
-  double: number;
+    count: number;
+    double: number;
 }
 
 interface SetupData {
-  state: CounterState;
-  increment: Function;
-  meta: RouteMeta;
+    state: CounterState;
+    increment: () => void;
+    meta: RouteMeta;
 }
 
 export default defineComponent({
-  name: 'Counter',
-  setup(): SetupData {
-    const state = reactive<StateReactive>({
-      count: 0,
-      double: computed((): number => state.count * 2)
-    }) as CounterState
+    name: 'Counter',
+    setup(): SetupData {
+        const state = reactive<StateReactive>({
+            count: 0,
+            double: computed((): number => state.count * 2)
+        }) as CounterState
 
-    function increment() {
-      state.count++
+        function increment(): void {
+            state.count++
+        }
+
+        const meta = useRouteMeta()
+
+        return {
+            state,
+            increment,
+            meta
+        }
     }
-
-    const meta = useRouteMeta()
-
-    return {
-      state,
-      increment,
-      meta
-    }
-  }
 })
 </script>

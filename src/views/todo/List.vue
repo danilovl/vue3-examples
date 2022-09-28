@@ -8,36 +8,36 @@
 </template>
 
 <script lang="ts">
+import type {ComputedRef, Ref} from 'vue'
 import {defineComponent} from 'vue'
-import TodoItem from '@/components/todo/TodoItem.vue'
-import CreateTodoItem from '@/components/todo/CreateTodoItem.vue'
+import TodoItem from './component/TodoItem.vue'
+import CreateTodoItem from './component/CreateTodoItem.vue'
 import useTodos from '@/hooks/useTodos'
-import {ComputedRef, Ref} from '@vue/reactivity'
 
 interface SetupData {
-  todos: ComputedRef;
-  addTodo: Function;
-  removeTodo: Function;
-  newTodoTitle: Ref;
-  newTodoDescription: Ref;
+    todos: ComputedRef;
+    addTodo: () => void;
+    removeTodo: (id: number) => void;
+    newTodoTitle: Ref;
+    newTodoDescription: Ref;
 }
 
 export default defineComponent({
-  name: 'TodoList',
-  components: {
-    TodoItem,
-    CreateTodoItem
-  },
-  setup(): SetupData {
-    const {todos, addTodo, removeTodo, newTodoTitle, newTodoDescription} = useTodos()
+    name: 'TodoList',
+    components: {
+        TodoItem,
+        CreateTodoItem
+    },
+    setup(): SetupData {
+        const {todos, addTodo, removeTodo, newTodoTitle, newTodoDescription} = useTodos()
 
-    return {
-      todos,
-      addTodo,
-      removeTodo,
-      newTodoTitle,
-      newTodoDescription
+        return {
+            todos,
+            addTodo,
+            removeTodo,
+            newTodoTitle,
+            newTodoDescription
+        }
     }
-  }
 })
 </script>

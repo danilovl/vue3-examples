@@ -14,64 +14,64 @@
 </template>
 
 <script lang="ts">
-import {
-  defineComponent,
-  onBeforeMount,
-  onBeforeUpdate,
-  onMounted,
-  onActivated,
-  onDeactivated,
-  onUpdated,
-  onUnmounted
-} from 'vue'
+import type RouteMeta from '@/interfaces/routeMeta'
 import useRouteMeta from '@/hooks/useRouteMeta'
-import RouteMeta from '@/interfaces/routeMeta'
+import {
+    defineComponent,
+    onBeforeMount,
+    onBeforeUpdate,
+    onMounted,
+    onActivated,
+    onDeactivated,
+    onUpdated,
+    onUnmounted
+} from 'vue'
 
 interface SetupData {
-  meta: RouteMeta;
+    meta: RouteMeta;
 }
 
 export default defineComponent({
-  name: 'LifecycleHooks',
-  data() {
-    return {
-      dataMessage: ''
+    name: 'LifecycleHooks',
+    data() {
+        return {
+            dataMessage: ''
+        }
+    },
+    setup(): SetupData {
+        onBeforeMount((): void => {
+            console.log('onBeforeMount')
+        })
+
+        onMounted((): void => {
+            console.log('onMounted')
+        })
+
+        onBeforeUpdate((): void => {
+            console.log('onBeforeUpdate')
+        })
+
+        onUpdated((): void => {
+            console.log('onUpdated')
+        })
+
+        onUnmounted((): void => {
+            console.log('onUnmounted')
+        })
+
+        onActivated((): void => {
+            console.log('onActivated')
+        })
+
+        onDeactivated((): void => {
+            console.log('onDeactivated')
+        })
+
+        const meta = useRouteMeta()
+
+        return {
+            meta
+        }
     }
-  },
-  setup(): SetupData {
-    onBeforeMount(() => {
-      console.log('onBeforeMount')
-    })
-
-    onMounted(() => {
-      console.log('onMounted')
-    })
-
-    onBeforeUpdate(() => {
-      console.log('onBeforeUpdate')
-    })
-
-    onUpdated(() => {
-      console.log('onUpdated')
-    })
-
-    onUnmounted(() => {
-      console.log('onUnmounted')
-    })
-
-    onActivated(() => {
-      console.log('onActivated')
-    })
-
-    onDeactivated(() => {
-      console.log('onDeactivated')
-    })
-
-    const meta = useRouteMeta()
-
-    return {
-      meta
-    }
-  }
 })
 </script>

@@ -44,26 +44,27 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, Ref, ref} from 'vue'
+import type {Ref} from 'vue'
+import type RouteMeta from '@/interfaces/routeMeta'
+import {defineComponent, ref} from 'vue'
 import useRouteMeta from '@/hooks/useRouteMeta'
-import RouteMeta from '@/interfaces/routeMeta'
 
 interface SetupData {
-  isModalOpen: Ref;
-  meta: RouteMeta;
+    isModalOpen: Ref;
+    meta: RouteMeta;
 }
 
 export default defineComponent({
-  name: 'Teleport',
-  setup(): SetupData {
-    const isModalOpen = ref<boolean>(false)
+    name: 'Teleport',
+    setup(): SetupData {
+        const isModalOpen = ref<boolean>(false)
 
-    const meta = useRouteMeta()
+        const meta = useRouteMeta()
 
-    return {
-      isModalOpen,
-      meta
+        return {
+            isModalOpen,
+            meta
+        }
     }
-  }
 })
 </script>

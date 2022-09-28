@@ -12,7 +12,7 @@
 import {defineComponent} from 'vue'
 
 export default defineComponent({
-  name: 'AddToCart',
-  emits: ['addToCart']
+    name: 'AddToCart',
+    emits: ['addToCart']
 })
 </script>

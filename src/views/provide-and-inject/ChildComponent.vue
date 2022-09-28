@@ -16,26 +16,27 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, inject, Ref} from 'vue'
+import type {Ref} from 'vue'
+import {defineComponent, inject} from 'vue'
 import ChildSubComponent from '@/views/provide-and-inject/ChildSubComponent.vue'
 import {MessageUniqueIdentifierSymbol} from '@/views/provide-and-inject/ProvideAndInject.vue'
 
 interface SetupData {
-  injectMessage: Ref | undefined;
+    injectMessage: Ref | undefined;
 }
 
 export default defineComponent({
-  name: 'ChildComponent',
-  components: {
-    ChildSubComponent
-  },
-  inject: ['childComponentMessage'],
-  setup(): SetupData {
-    const injectMessage = inject<Ref>(MessageUniqueIdentifierSymbol)
+    name: 'ChildComponent',
+    components: {
+        ChildSubComponent
+    },
+    inject: ['childComponentMessage'],
+    setup(): SetupData {
+        const injectMessage = inject<Ref>(MessageUniqueIdentifierSymbol)
 
-    return {
-      injectMessage
+        return {
+            injectMessage
+        }
     }
-  }
 })
 </script>

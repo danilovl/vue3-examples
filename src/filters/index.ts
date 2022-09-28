@@ -1,4 +1,4 @@
-import {App} from '@vue/runtime-core'
+import type {App} from 'vue'
 import capitalizeFirstLetter from './capitalizeFirstLetter'
 
 export default function addFilters(app: App): void {
@@ -6,4 +6,3 @@ export default function addFilters(app: App): void {
         capitalizeFirstLetter
     }
 }
-

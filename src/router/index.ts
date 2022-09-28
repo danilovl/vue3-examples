@@ -1,5 +1,6 @@
-import {createRouter, createWebHashHistory, RouteRecordRaw} from 'vue-router'
-import Home from '../views/Home.vue'
+import type {RouteRecordRaw} from 'vue-router'
+import {createRouter, createWebHashHistory} from 'vue-router'
+import Home from '@/views/Home.vue'
 
 const routes: Array<RouteRecordRaw> = [
     {
@@ -229,30 +230,26 @@ router.beforeEach((to, from, next) => {
     }
 
     Array.from(document.querySelectorAll('[data-vue-router-controlled]')).map(el => {
-        if (el.parentNode === null) {
-            return null
-        }
-
-        return el.parentNode.removeChild(el)
+        return el.parentNode === null ? null : el.parentNode.removeChild(el)
     })
 
     if (!nearestWithMeta) {
         return next()
     }
 
-    nearestWithMeta.meta.metaTags.map(function (tagDef: any) {
-        const tag = document.createElement('meta')
+    nearestWithMeta.meta.metaTags
+        .map((tagDef: any): Element => {
+            const tag = document.createElement('meta')
 
-        Object.keys(tagDef).forEach(key => {
-            tag.setAttribute(key, tagDef[key])
+            Object.keys(tagDef).forEach(key => {
+                tag.setAttribute(key, tagDef[key])
+            })
+
+            tag.setAttribute('data-vue-router-controlled', '')
+
+            return tag
         })
-
-        tag.setAttribute('data-vue-router-controlled', '')
-
-        return tag
-    }).forEach(function (tag: any) {
-        return document.head.appendChild(tag)
-    })
+        .forEach((tag: Element): Element => document.head.appendChild(tag))
 
     next()
 })

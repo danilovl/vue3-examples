@@ -6,15 +6,15 @@
 </template>
 
 <script lang="ts">
+import type {TodoModel} from '@/model/todo-model'
 import {defineComponent} from 'vue'
-import TodoItem from '@/components/todo/TodoItem.vue'
+import TodoItem from './component/TodoItem.vue'
 import BackLink from '@/components/BackLink.vue'
 import useTodos from '@/hooks/useTodos'
-import {TodoModel} from '@/model/todo-model'
 import {useRoute} from 'vue-router'
 
 interface SetupData {
-  todo: TodoModel;
+  todo: TodoModel | null;
 }
 
 export default defineComponent({

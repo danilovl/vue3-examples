@@ -18,25 +18,25 @@
 </template>
 
 <script lang="ts">
+import type RouteMeta from '@/interfaces/routeMeta'
 import {defineComponent, defineAsyncComponent} from 'vue'
 import useRouteMeta from '@/hooks/useRouteMeta'
-import RouteMeta from '@/interfaces/routeMeta'
 
 interface SetupData {
-  meta: RouteMeta;
+    meta: RouteMeta;
 }
 
 export default defineComponent({
-  name: 'Suspense',
-  components: {
-    SuspenseAsync: defineAsyncComponent(() => import('@/views/suspense/SuspenseAsync.vue'))
-  },
-  setup(): SetupData {
-    const meta = useRouteMeta()
+    name: 'Suspense',
+    components: {
+        SuspenseAsync: defineAsyncComponent(() => import('@/views/suspense/SuspenseAsync.vue'))
+    },
+    setup(): SetupData {
+        const meta = useRouteMeta()
 
-    return {
-      meta
+        return {
+            meta
+        }
     }
-  }
 })
 </script>

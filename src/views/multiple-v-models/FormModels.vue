@@ -53,32 +53,32 @@
   </form>
 </template>
 
-<script>
+<script lang="ts">
 import {defineComponent} from 'vue'
 
 export default defineComponent({
-  name: 'MultipleModels',
-  props: {
-    name: {
-      type: String,
-      require: true
+    name: 'MultipleModels',
+    props: {
+        name: {
+            type: String,
+            require: true,
+        },
+        addressLine: {
+            type: String,
+            require: true,
+        },
+        streetNumber: {
+            type: String,
+            require: true,
+        },
+        town: {
+            type: String,
+            require: true,
+        },
+        homeAddress: {
+            type: Boolean,
+            require: true,
+        },
     },
-    addressLine: {
-      type: String,
-      require: true
-    },
-    streetNumber: {
-      type: String,
-      require: true
-    },
-    town: {
-      type: String,
-      require: true
-    },
-    homeAddress: {
-      type: Boolean,
-      require: true
-    }
-  }
 })
 </script>

@@ -82,65 +82,65 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, ref, computed, reactive, Ref} from 'vue'
-import {ComputedRef} from '@vue/reactivity'
+import type {ComputedRef, Ref} from 'vue'
+import type RouteMeta from '@/interfaces/routeMeta'
+import {defineComponent, ref, computed, reactive} from 'vue'
 import useRouteMeta from '@/hooks/useRouteMeta'
-import RouteMeta from '@/interfaces/routeMeta'
 
 interface StateReactive {
-  numbers: number[];
-  checkedNumbers: number[];
-  sum: ComputedRef;
+    numbers: number[];
+    checkedNumbers: number[];
+    sum: ComputedRef;
 }
 
 interface SumState {
-  numbers: number[];
-  checkedNumbers: number[];
-  sum: number;
+    numbers: number[];
+    checkedNumbers: number[];
+    sum: number;
 }
 
 interface SetupData {
-  refMessage: Ref;
-  sumState: SumState;
-  meta: RouteMeta;
+    refMessage: Ref;
+    sumState: SumState;
+    meta: RouteMeta;
 }
 
 export default defineComponent({
-  name: 'FormInput',
-  data() {
-    return {
-      dataMessage: '',
-      checked: true,
-      checkedNames: {
-        names: ['Jack', 'John', 'Mike'],
-        checked: []
-      },
-      pickedNames: {
-        names: ['Jack', 'John', 'Mike'],
-        picked: null
-      },
-      selectedNames: {
-        names: ['Jack', 'John', 'Mike'],
-        selected: null
-      }
+    name: 'FormInput',
+    data() {
+        return {
+            dataMessage: '',
+            checked: true,
+            checkedNames: {
+                names: ['Jack', 'John', 'Mike'],
+                checked: []
+            },
+            pickedNames: {
+                names: ['Jack', 'John', 'Mike'],
+                picked: null
+            },
+            selectedNames: {
+                names: ['Jack', 'John', 'Mike'],
+                selected: null
+            }
+        }
+    },
+    setup(): SetupData {
+        const refMessage = ref<string | number>('')
+
+        const sumState = reactive<StateReactive>({
+            numbers: Array.from(Array(10).keys()),
+            checkedNumbers: [],
+            sum: computed(() => sumState.checkedNumbers.reduce((a: number, b: number): number => a + b, 0))
+        }) as SumState
+
+        const meta = useRouteMeta()
+
+        return {
+            refMessage,
+            sumState,
+            meta
+        }
     }
-  },
-  setup(): SetupData {
-    const refMessage = ref<string | number>('')
-
-    const sumState = reactive<StateReactive>({
-      numbers: Array.from(Array(10).keys()),
-      checkedNumbers: [],
-      sum: computed(() => sumState.checkedNumbers.reduce((a: number, b: number): number => a + b, 0))
-    }) as SumState
-
-    const meta = useRouteMeta()
-
-    return {
-      refMessage,
-      sumState,
-      meta
-    }
-  }
 })
 </script>

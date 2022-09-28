@@ -24,63 +24,61 @@
 </template>
 
 <script lang="ts">
-import {
-  defineComponent,
-  onMounted,
-  Ref,
-  ref
-} from 'vue'
-import axios, {AxiosResponse} from 'axios'
+import type {Ref} from 'vue'
+import type RouteMeta from '@/interfaces/routeMeta'
+import type {AxiosResponse} from 'axios'
+import {defineComponent, onMounted, ref} from 'vue'
+import axios from 'axios'
 import {sleep} from '@/helpers'
 import useRouteMeta from '@/hooks/useRouteMeta'
-import RouteMeta from '@/interfaces/routeMeta'
+import apiUrlConstant from '@/constants/api'
 
 interface SetupData {
-  isLoading: Ref;
-  processInformation: Ref;
-  apiUrl: string;
-  todos: Ref;
-  meta: RouteMeta;
+    isLoading: Ref;
+    processInformation: Ref;
+    apiUrl: string;
+    todos: Ref;
+    meta: RouteMeta;
 }
 
 export default defineComponent({
-  name: 'Axios',
-  setup(): SetupData {
-    const apiUrl = 'https://jsonplaceholder.typicode.com/todos'
-    const isLoading = ref<boolean>(true)
-    const processInformation = ref<string>('loading data')
-    const todos = ref<AxiosResponse>()
+    name: 'Axios',
+    setup(): SetupData {
+        const apiUrl = apiUrlConstant.apiTodoUrl
+        const isLoading = ref<boolean>(true)
+        const processInformation = ref<string>('loading data')
+        const todos = ref<AxiosResponse>()
 
-    onMounted(() => {
-      axios
-          .get(apiUrl)
-          .then(function (response) {
-            return sleep(2000).then(function () {
-              processInformation.value = 'data was downloaded'
-              todos.value = response.data
-            })
-          })
-          .then(function () {
-            return sleep(2000).then(function () {
-              processInformation.value = 'data processing'
-            })
-          })
-          .then(function () {
-            sleep(2000).then(function () {
-              isLoading.value = false
-            })
-          })
-    })
+        onMounted((): void => {
+            axios
+                .get(apiUrl)
+                .then((response): Promise<void | null> => {
+                    return sleep(2000).then((): void => {
+                        processInformation.value = 'data was downloaded'
+                        todos.value = response.data
+                    });
+                })
+                .then((): Promise<void | null> => {
+                    return sleep(2000).then((): void => {
+                        processInformation.value = 'data processing'
+                    });
+                })
+                .then((): void => {
+                    sleep(2000).then((): void => {
+                        isLoading.value = false
+                    })
+                })
+        })
 
-    const meta = useRouteMeta()
+        const meta = useRouteMeta()
 
-    return {
-      isLoading,
-      processInformation,
-      apiUrl,
-      todos,
-      meta
+        return {
+            isLoading,
+            processInformation,
+            apiUrl,
+            todos,
+            meta
+        }
     }
-  }
 })
 </script>

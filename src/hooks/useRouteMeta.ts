@@ -1,6 +1,6 @@
 import {reactive, toRef} from 'vue'
 import {useRoute} from 'vue-router'
-import RouteMeta from '@/interfaces/routeMeta'
+import type RouteMeta from '@/interfaces/routeMeta'
 
 export default function useRouteMeta(): RouteMeta {
     const meta = toRef(reactive(useRoute()), 'meta')

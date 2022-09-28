@@ -69,154 +69,147 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, reactive, Ref, watch} from 'vue'
+import type {Ref} from 'vue'
+import type RouteMeta from '@/interfaces/routeMeta'
+import {defineComponent, reactive, watch} from 'vue'
 import {useField} from 'vee-validate'
-import {ComputedRef} from '@vue/reactivity'
 import useRouteMeta from '@/hooks/useRouteMeta'
-import RouteMeta from '@/interfaces/routeMeta'
 
 interface Address {
-  name: string | null;
-  addressLine: string | null;
-  streetNumber: string | null;
-  town: string | null;
-  homeAddress: boolean;
+    name: string | null;
+    addressLine: string | null;
+    streetNumber: string | null;
+    town: string | null;
+    homeAddress: boolean;
 }
 
 interface AddressRef {
-  name: Ref;
-  addressLine: Ref;
-  streetNumber: Ref;
-  town: Ref;
-  homeAddress: boolean;
+    name: Ref;
+    addressLine: Ref;
+    streetNumber: Ref;
+    town: Ref;
+    homeAddress: boolean;
 }
 
 interface AddressErrorMessageRef {
-  name: ComputedRef<string>;
-  addressLine: ComputedRef<string>;
-  streetNumber: ComputedRef<string>;
-  town: ComputedRef<string>;
+    name: Ref<string | undefined>;
+    addressLine: Ref<string | undefined>;
+    streetNumber: Ref<string | undefined>;
+    town: Ref<string | undefined>;
 }
 
 interface AddressErrorMessageKeys {
-  [key: string]: string | null;
+    [key: string]: string | null;
 }
 
 interface AddressErrorMessage extends AddressErrorMessageKeys {
-  name: string | null;
-  addressLine: string | null;
-  streetNumber: string | null;
-  town: string | null;
-}
-
-interface StartTyping {
-  name: boolean;
-  addressLine: boolean;
-  streetNumber: boolean;
-  town: boolean;
+    name: string | null;
+    addressLine: string | null;
+    streetNumber: string | null;
+    town: string | null;
 }
 
 interface StartTypingKeys {
-  [key: string]: boolean;
+    [key: string]: boolean;
 }
 
 interface StartTyping extends StartTypingKeys {
-  name: boolean;
-  addressLine: boolean;
-  streetNumber: boolean;
-  town: boolean;
+    name: boolean;
+    addressLine: boolean;
+    streetNumber: boolean;
+    town: boolean;
 }
 
 interface SetupData {
-  address: Address;
-  addressErrorMessage: AddressErrorMessage;
-  isFormValid: Function;
-  fieldValidationClass: Function;
-  meta: RouteMeta;
+    address: Address;
+    addressErrorMessage: AddressErrorMessage;
+    isFormValid: () => boolean;
+    fieldValidationClass: (type: string) => string | null;
+    meta: RouteMeta;
 }
 
 export default defineComponent({
-  name: 'VeeValidate',
-  setup(): SetupData {
-    const startTyping: StartTyping = {
-      name: false,
-      addressLine: false,
-      streetNumber: false,
-      town: false
-    }
-
-    function validate(value: any): boolean | string {
-      if (!value) {
-        return 'This field is required'
-      }
-
-      if (value.length < 3) {
-        return 'Must contain more than 3 characters'
-      }
-
-      return true
-    }
-
-    const {value: name, errorMessage: errorMessageName} = useField('name', validate)
-    const {value: addressLine, errorMessage: errorMessageAddressLine} = useField('addressLine', validate)
-    const {value: streetNumber, errorMessage: errorMessageStreetNumber} = useField('streetNumber', validate)
-    const {value: town, errorMessage: errorMessageTown} = useField('town', validate)
-
-    const address = reactive<AddressRef>({
-      name: name,
-      addressLine: addressLine,
-      streetNumber: streetNumber,
-      town: town,
-      homeAddress: false
-    }) as Address
-
-    watch(name, (): void => {
-      startTyping.name = true
-    })
-    watch(addressLine, (): void => {
-      startTyping.addressLine = true
-    })
-    watch(streetNumber, (): void => {
-      startTyping.streetNumber = true
-    })
-    watch(town, (): void => {
-      startTyping.town = true
-    })
-
-    const addressErrorMessage = reactive<AddressErrorMessageRef>({
-      name: errorMessageName,
-      addressLine: errorMessageAddressLine,
-      streetNumber: errorMessageStreetNumber,
-      town: errorMessageTown,
-    }) as AddressErrorMessage
-
-    const fieldValidationClass = function (type: string): string | null {
-      if (!startTyping[type]) {
-        return null
-      }
-
-      return addressErrorMessage[type] === undefined ? 'is-valid' : 'is-invalid'
-    }
-
-    const isFormValid = function (): boolean {
-      for (const field in addressErrorMessage) {
-        if (startTyping[field] === false || addressErrorMessage[field] !== undefined) {
-          return false
+    name: 'VeeValidate',
+    setup(): SetupData {
+        const startTyping: StartTyping = {
+            name: false,
+            addressLine: false,
+            streetNumber: false,
+            town: false
         }
-      }
 
-      return true
+        function validate(value: any): boolean | string {
+            if (!value) {
+                return 'This field is required'
+            }
+
+            if (value.length < 3) {
+                return 'Must contain more than 3 characters'
+            }
+
+            return true
+        }
+
+        const {value: name, errorMessage: errorMessageName} = useField('name', validate)
+        const {value: addressLine, errorMessage: errorMessageAddressLine} = useField('addressLine', validate)
+        const {value: streetNumber, errorMessage: errorMessageStreetNumber} = useField('streetNumber', validate)
+        const {value: town, errorMessage: errorMessageTown} = useField('town', validate)
+
+        const address = reactive<AddressRef>({
+            name: name,
+            addressLine: addressLine,
+            streetNumber: streetNumber,
+            town: town,
+            homeAddress: false
+        }) as Address
+
+        watch(name, (): void => {
+            startTyping.name = true
+        })
+        watch(addressLine, (): void => {
+            startTyping.addressLine = true
+        })
+        watch(streetNumber, (): void => {
+            startTyping.streetNumber = true
+        })
+        watch(town, (): void => {
+            startTyping.town = true
+        })
+
+        const addressErrorMessage = reactive<AddressErrorMessageRef>({
+            name: errorMessageName,
+            addressLine: errorMessageAddressLine,
+            streetNumber: errorMessageStreetNumber,
+            town: errorMessageTown,
+        }) as AddressErrorMessage
+
+        const fieldValidationClass = (type: string): string | null => {
+            if (!startTyping[type]) {
+                return null
+            }
+
+            return addressErrorMessage[type] === undefined ? 'is-valid' : 'is-invalid'
+        }
+
+        const isFormValid = (): boolean => {
+            for (const field in addressErrorMessage) {
+                if (addressErrorMessage[field] !== undefined || !startTyping[field]) {
+                    return false
+                }
+            }
+
+            return true
+        }
+
+        const meta = useRouteMeta()
+
+        return {
+            isFormValid,
+            address,
+            addressErrorMessage,
+            fieldValidationClass,
+            meta
+        }
     }
-
-    const meta = useRouteMeta()
-
-    return {
-      isFormValid,
-      address,
-      addressErrorMessage,
-      fieldValidationClass,
-      meta
-    }
-  }
 })
 </script>

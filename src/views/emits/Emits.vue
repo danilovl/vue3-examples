@@ -26,41 +26,41 @@
 </template>
 
 <script lang="ts">
+import type RouteMeta from '@/interfaces/routeMeta'
 import {defineComponent, reactive} from 'vue'
 import AddToCart from '@/views/emits/AddToCart.vue'
 import AddToCartObject from '@/views/emits/AddToCartObject.vue'
 import useRouteMeta from '@/hooks/useRouteMeta'
-import RouteMeta from '@/interfaces/routeMeta'
 
 interface SetupData {
-  cart: string[];
-  cartObject: object[];
-  addToCart: Function;
-  addToCartObject: Function;
-  meta: RouteMeta;
+    cart: string[];
+    cartObject: object[];
+    addToCart: () => number;
+    addToCartObject: (item: object) => number;
+    meta: RouteMeta;
 }
 
 export default defineComponent({
-  name: 'Emits',
-  components: {
-    AddToCart,
-    AddToCartObject
-  },
-  setup(): SetupData {
-    const cart = reactive<string[]>([])
-    const cartObject = reactive<object[]>([])
+    name: 'Emits',
+    components: {
+        AddToCart,
+        AddToCartObject
+    },
+    setup(): SetupData {
+        const cart = reactive<string[]>([])
+        const cartObject = reactive<object[]>([])
 
-    const addToCart = (): number => cart.push('item')
-    const addToCartObject = (item: object): number => cartObject.push(item)
-    const meta = useRouteMeta()
+        const addToCart = (): number => cart.push('item')
+        const addToCartObject = (item: object): number => cartObject.push(item)
+        const meta = useRouteMeta()
 
-    return {
-      meta,
-      cart,
-      cartObject,
-      addToCart,
-      addToCartObject
+        return {
+            meta,
+            cart,
+            cartObject,
+            addToCart,
+            addToCartObject
+        }
     }
-  }
 })
 </script>

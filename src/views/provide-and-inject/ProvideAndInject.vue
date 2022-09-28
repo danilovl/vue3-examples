@@ -15,44 +15,45 @@
 </template>
 
 <script lang="ts">
+import type {Ref} from 'vue'
+import type RouteMeta from '@/interfaces/routeMeta'
 import ChildComponent from '@/views/provide-and-inject/ChildComponent.vue'
-import {Ref, ref, provide, readonly, defineComponent} from 'vue'
+import {ref, provide, readonly, defineComponent} from 'vue'
 import useRouteMeta from '@/hooks/useRouteMeta'
-import RouteMeta from '@/interfaces/routeMeta'
 
 interface SetupData {
-  injectMessage: Ref;
-  meta: RouteMeta;
+    injectMessage: Ref;
+    meta: RouteMeta;
 }
 
 interface ProvideState {
-  childComponentMessage: string;
-  subChildComponentMessage: string;
+    childComponentMessage: string;
+    subChildComponentMessage: string;
 }
 
 export const MessageUniqueIdentifierSymbol = Symbol('User settings state provider identifier')
 
 export default defineComponent({
-  name: 'ProvideAndInject',
-  components: {
-    ChildComponent
-  },
-  setup(): SetupData {
-    const injectMessage = ref<string | number>('')
+    name: 'ProvideAndInject',
+    components: {
+        ChildComponent
+    },
+    setup(): SetupData {
+        const injectMessage = ref<string | number>('')
 
-    provide<Ref>(MessageUniqueIdentifierSymbol, readonly(injectMessage))
-    const meta = useRouteMeta()
+        provide<Ref>(MessageUniqueIdentifierSymbol, readonly(injectMessage))
+        const meta = useRouteMeta()
 
-    return {
-      injectMessage,
-      meta
+        return {
+            injectMessage,
+            meta
+        }
+    },
+    provide(): ProvideState {
+        return {
+            childComponentMessage: 'Child component inject message',
+            subChildComponentMessage: 'Sub child component inject message'
+        }
     }
-  },
-  provide(): ProvideState {
-    return {
-      childComponentMessage: 'Child component inject message',
-      subChildComponentMessage: 'Sub child component inject message'
-    }
-  }
 })
 </script>

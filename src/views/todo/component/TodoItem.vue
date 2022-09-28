@@ -43,57 +43,57 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, ref, watch, Ref, computed} from 'vue'
+import type {Ref, ComputedRef} from 'vue/'
+import {defineComponent, ref, watch, computed} from 'vue'
 import {TodoModel} from '@/model/todo-model'
 import useTodos from '@/hooks/useTodos'
-import {ComputedRef} from '@vue/reactivity'
 
 interface SetupData {
-  removeTodo: Function;
-  todoDone: Ref;
-  todoCardClass: ComputedRef;
+    removeTodo: (id: number) => void;
+    todoDone: Ref;
+    todoCardClass: ComputedRef;
 }
 
 export default defineComponent({
-  name: 'TodoItem',
-  props: {
-    todo: {
-      type: TodoModel,
-      require: true
+    name: 'TodoItem',
+    props: {
+        todo: {
+            type: TodoModel,
+            require: true
+        },
+        showDetailBtn: {
+            type: Boolean,
+            require: false,
+            default: true
+        },
+        showEditBtn: {
+            type: Boolean,
+            require: false,
+            default: true
+        },
+        showDeleteBtn: {
+            type: Boolean,
+            require: false,
+            default: true
+        }
     },
-    showDetailBtn: {
-      type: Boolean,
-      require: false,
-      default: true
-    },
-    showEditBtn: {
-      type: Boolean,
-      require: false,
-      default: true
-    },
-    showDeleteBtn: {
-      type: Boolean,
-      require: false,
-      default: true
+    setup(props): SetupData {
+        const {removeTodo, updateTodoDone} = useTodos()
+        const todoDone = ref<boolean>(props.todo ? props.todo.done : false)
+
+        watch(todoDone, () => {
+            if (props.todo !== undefined) {
+                updateTodoDone(props.todo.id, todoDone.value)
+            }
+        })
+
+        const todoCardClass = computed<string>(() => todoDone.value === true ? 'green' : 'red')
+
+        return {
+            removeTodo,
+            todoDone,
+            todoCardClass
+        }
     }
-  },
-  setup(props): SetupData {
-    const {removeTodo, updateTodoDone} = useTodos()
-    const todoDone = ref<boolean>(props.todo ? props.todo.done : false)
-
-    watch(todoDone, () => {
-      if (props.todo !== undefined) {
-        updateTodoDone(props.todo.id, todoDone.value)
-      }
-    })
-
-   const todoCardClass = computed<string>(() => todoDone.value === true ? 'green' : 'red')
-
-    return {
-      removeTodo,
-      todoDone,
-      todoCardClass
-    }
-  }
 });
 </script>

@@ -1,4 +1,4 @@
-# Examples for Vue3.js + Vuex 4 + TypeScript
+# Examples for Vue3 + Pinia + TypeScript
 Demonstrate new features for Vue 3 and how to use them
 
 Examples
@@ -26,7 +26,7 @@ npm install
 
 ### Compiles and hot-reloads for development
 ```
-npm run serve
+npm run dev
 ```
 
 ### Compiles and minifies for production

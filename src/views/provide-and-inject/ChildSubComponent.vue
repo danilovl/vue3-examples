@@ -15,22 +15,23 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, inject, Ref} from 'vue'
+import type {Ref} from 'vue'
+import {defineComponent, inject} from 'vue'
 import {MessageUniqueIdentifierSymbol} from '@/views/provide-and-inject/ProvideAndInject.vue'
 
 interface SetupData {
-  injectMessage: Ref | undefined;
+    injectMessage: Ref | undefined;
 }
 
 export default defineComponent({
-  name: 'ChildSubComponent',
-  inject: ['subChildComponentMessage'],
-  setup(): SetupData {
-    const injectMessage = inject<Ref>(MessageUniqueIdentifierSymbol)
+    name: 'ChildSubComponent',
+    inject: ['subChildComponentMessage'],
+    setup(): SetupData {
+        const injectMessage = inject<Ref>(MessageUniqueIdentifierSymbol)
 
-    return {
-      injectMessage
+        return {
+            injectMessage
+        }
     }
-  }
 })
 </script>

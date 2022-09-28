@@ -19,39 +19,38 @@
 </template>
 
 <script lang="ts">
+import type RouteMeta from '@/interfaces/routeMeta'
 import {defineComponent, reactive} from 'vue'
 import useRouteMeta from '@/hooks/useRouteMeta'
-import RouteMeta from '@/interfaces/routeMeta'
 
 interface SetupData {
-  events: Array<object>;
-  keyCodeEvent: Function;
-  meta: RouteMeta;
+    events: Array<object>;
+    keyCodeEvent: (event: any) => void;
+    meta: RouteMeta;
 }
 
 export default defineComponent({
-  name: 'KeyCode',
-  setup(): SetupData {
-    const eventsType: Array<object> = []
-    const events = reactive(eventsType)
+    name: 'KeyCode',
+    setup(): SetupData {
+        const meta = useRouteMeta()
+        const eventsType: Array<object> = []
+        const events = reactive(eventsType)
 
-    const keyEvent = function (event: any): void {
-      events.length = 0
-      events.push({
-        type: event.type,
-        key: event.key,
-        charCode: event.charCode,
-        keyCode: event.keyCode
-      })
+        const keyEvent = (event: any): void => {
+            events.length = 0
+            events.push({
+                type: event.type,
+                key: event.key,
+                charCode: event.charCode,
+                keyCode: event.keyCode
+            })
+        }
+
+        return {
+            events,
+            meta,
+            keyCodeEvent: keyEvent
+        }
     }
-
-    const meta = useRouteMeta()
-
-    return {
-      events,
-      meta,
-      keyCodeEvent: keyEvent
-    }
-  }
 })
 </script>

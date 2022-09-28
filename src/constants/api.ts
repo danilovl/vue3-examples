@@ -1,6 +1,5 @@
-const apiTodosUrl = 'https://jsonplaceholder.typicode.com/todos'
+const apiTodoUrl = 'https://jsonplaceholder.typicode.com/todos'
 
 export default {
-    apiTodosUrl: apiTodosUrl
+    apiTodoUrl: apiTodoUrl
 }
-

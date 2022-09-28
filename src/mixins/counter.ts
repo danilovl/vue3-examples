@@ -1,5 +1,5 @@
+import type {ComputedRef} from 'vue'
 import {computed, reactive} from 'vue'
-import {ComputedRef} from '@vue/reactivity'
 
 export interface StateReactive {
     count: number;
@@ -8,7 +8,7 @@ export interface StateReactive {
 
 export interface UseCounter {
     state: CounterState;
-    increment: Function;
+    increment: () => void;
 }
 
 export interface CounterState {
@@ -34,7 +34,7 @@ function useCounter(): UseCounter {
 
 interface SetupData {
     state: CounterState;
-    increment: Function;
+    increment: () => void;
 }
 
 export default function (): SetupData {

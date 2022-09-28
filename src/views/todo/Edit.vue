@@ -18,37 +18,37 @@ import {useRoute, useRouter} from 'vue-router'
 import BackLink from '@/components/BackLink.vue'
 
 interface SetupData {
-  todo: TodoModel;
-  editTodo: Function;
+    todo: TodoModel;
+    editTodo: () => void;
 }
 
 export default defineComponent({
-  name: 'EditTodoItem',
-  components: {
-    BackLink
-  },
-  setup(): SetupData {
-    const route = useRoute()
-    const router = useRouter()
-    const {getTodoById, updateTodo} = useTodos()
+    name: 'EditTodoItem',
+    components: {
+        BackLink
+    },
+    setup(): SetupData {
+        const route = useRoute()
+        const router = useRouter()
+        const {getTodoById, updateTodo} = useTodos()
 
-    const existTodo = getTodoById(Number(route.params['id']))
-    const todo = new TodoModel(
-        existTodo.id,
-        existTodo.title,
-        existTodo.description,
-        existTodo.done
-    );
+        const existTodo = getTodoById(Number(route.params['id']))
+        const todo = new TodoModel(
+            existTodo.id,
+            existTodo.title,
+            existTodo.description,
+            existTodo.done
+        );
 
-    const editTodo = function (): void {
-      updateTodo(todo)
-      router.push({name: 'todo_detail', params: {id: todo.id}})
+        const editTodo = (): void => {
+            updateTodo(todo)
+            router.push({name: 'todo_detail', params: {id: todo.id}})
+        }
+
+        return {
+            todo,
+            editTodo
+        }
     }
-
-    return {
-      todo,
-      editTodo
-    }
-  }
 })
 </script>

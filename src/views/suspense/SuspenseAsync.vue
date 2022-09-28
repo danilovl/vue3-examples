@@ -16,19 +16,17 @@ import {sleep} from '@/helpers'
 import apiConstant from '@/constants/api'
 
 export default defineComponent({
-  name: 'SuspenseAsync',
-  async setup() {
-    const todos = await axios
-        .get(apiConstant.apiTodosUrl)
-        .then(response => {
-          return sleep(2000).then(function () {
-            return response.data
-          })
-        })
+    name: 'SuspenseAsync',
+    async setup() {
+        const todos = await axios
+            .get(apiConstant.apiTodoUrl)
+            .then((response): Promise<void | null> =>
+                  sleep(2000).then((): any => response.data)
+            )
 
-    return {
-      todos
+        return {
+            todos
+        }
     }
-  }
 })
 </script>

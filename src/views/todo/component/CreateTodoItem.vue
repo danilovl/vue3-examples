@@ -10,25 +10,25 @@
 
 <script lang="ts">
 import {defineComponent} from 'vue'
-import {TodoModel} from "@/model/todo-model"
-import useTodos from "@/hooks/useTodos"
+import {TodoModel} from '@/model/todo-model'
+import useTodos from '@/hooks/useTodos'
 
 export default defineComponent({
-  name: 'CreateTodoItem',
-  props: {
-    todo: {
-      type: TodoModel,
-      require: false
-    }
-  },
-  setup() {
-    const {addTodo, newTodoTitle, newTodoDescription} = useTodos()
+    name: 'CreateTodoItem',
+    props: {
+        todo: {
+            type: TodoModel,
+            require: false
+        }
+    },
+    setup() {
+        const {addTodo, newTodoTitle, newTodoDescription} = useTodos()
 
-    return {
-      addTodo,
-      newTodoTitle,
-      newTodoDescription
+        return {
+            addTodo,
+            newTodoTitle,
+            newTodoDescription
+        }
     }
-  }
 })
 </script>

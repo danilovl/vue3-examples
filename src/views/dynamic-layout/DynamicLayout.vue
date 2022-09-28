@@ -5,10 +5,14 @@
 
   <ul>
     <li class="nav-item">
-      <router-link :to="{name: 'dynamic_layout_simple'}">simple template</router-link>
+      <router-link :to="{name: 'dynamic_layout_simple'}">
+        simple template
+      </router-link>
     </li>
     <li class="nav-item">
-      <router-link :to="{name: 'dynamic_layout_blog'}">blog template</router-link>
+      <router-link :to="{name: 'dynamic_layout_blog'}">
+        blog template
+      </router-link>
     </li>
   </ul>
 
@@ -17,17 +21,21 @@
       <h2 class="blog-post-title">Sample blog post</h2>
       <p class="blog-post-meta">January 1, 2014 by <a href="#">Mark</a></p>
       <p>This blog post shows a few different types of content that’s supported and styled with Bootstrap. Basic
-        typography, images, and code are all supported.</p>
+        typography, images, and code are all supported.
+      </p>
       <hr>
       <p>Cum sociis natoque penatibus et magnis <a href="#">dis parturient montes</a>, nascetur ridiculus mus. Aenean eu
         leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis.
-        Cras mattis consectetur purus sit amet fermentum.</p>
+        Cras mattis consectetur purus sit amet fermentum.
+      </p>
       <blockquote>
         <p>Curabitur blandit tempus porttitor. <strong>Nullam quis risus eget urna mollis</strong> ornare vel eu leo.
-          Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+          Nullam id dolor id nibh ultricies vehicula ut id elit.
+        </p>
       </blockquote>
       <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum.
-        Aenean lacinia bibendum nulla sed consectetur.</p>
+        Aenean lacinia bibendum nulla sed consectetur.
+      </p>
       <h2>Heading</h2>
       <p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus,
         nisi erat porttitor ligula, eget lacinia odio sem nec elit. Morbi leo risus, porta ac consectetur ac, vestibulum
@@ -36,7 +44,8 @@
       <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
       <pre><code>Example code block</code></pre>
       <p>Aenean lacinia bibendum nulla sed consectetur. Etiam porta sem malesuada magna mollis euismod. Fusce dapibus,
-        tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa.</p>
+        tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa.
+      </p>
       <h3>Sub-heading</h3>
       <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean lacinia bibendum
         nulla sed consectetur. Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac cursus commodo,
@@ -57,18 +66,19 @@
 
     <template v-slot:about>
       <p class="mb-0">Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet
-        fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
+        fermentum. Aenean lacinia bibendum nulla sed consectetur.
+      </p>
     </template>
   </component>
 </template>
 
 <script lang="ts">
+import type {ComputedRef} from 'vue'
+import type {RouteMeta} from 'vue-router'
 import {defineComponent, computed, reactive} from 'vue'
-import {RouteMeta} from 'vue-router'
+import useRouteMeta from '@/hooks/useRouteMeta'
 import SimpleLayout from '@/views/dynamic-layout/SimpleLayout.vue'
 import BlogLayout from '@/views/dynamic-layout/BlogLayout.vue'
-import {ComputedRef} from '@vue/reactivity'
-import useRouteMeta from '@/hooks/useRouteMeta'
 
 interface SetupData {
   state: State;

@@ -10,8 +10,8 @@ import {defineComponent} from 'vue'
 import NavBar from '@/components/Navbar.vue'
 
 export default defineComponent({
-  components: {
-    NavBar
-  }
+    components: {
+        NavBar
+    }
 })
 </script>

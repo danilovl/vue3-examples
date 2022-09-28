@@ -9,16 +9,16 @@
 import {defineComponent} from 'vue'
 
 export default defineComponent({
-  name: 'Hello',
-  props: {
-    message: {
-      type: String,
-      require: true
-    },
-    description: {
-      type: String,
-      require: true
+    name: 'HelloMessage',
+    props: {
+        message: {
+            type: String,
+            require: true
+        },
+        description: {
+            type: String,
+            require: true
+        }
     }
-  }
 })
 </script>

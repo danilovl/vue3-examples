@@ -19,41 +19,38 @@
 </template>
 
 <script lang="ts">
+import type RouteMeta from '@/interfaces/routeMeta'
 import {defineComponent} from 'vue'
 import useRouteMeta from '@/hooks/useRouteMeta'
-import RouteMeta from '@/interfaces/routeMeta'
 
 interface SetupData {
-  texts: object;
-  toUpperCase: Function;
-  meta: RouteMeta;
+    texts: object;
+    toUpperCase: (string: string) => string;
+    meta: RouteMeta;
 }
 
 export default defineComponent({
-  name: 'Filters',
-  setup()  {
-    const texts = {
-      global: {
-        title: 'Global filter - capitalizeFirstLetter',
-        text: 'example text'
-      },
-      local: {
-        title: 'Local filter - toUpperCase',
-        text: 'example'
-      }
-    }
+    name: 'Filters',
+    setup(): SetupData {
+        const texts = {
+            global: {
+                title: 'Global filter - capitalizeFirstLetter',
+                text: 'example text'
+            },
+            local: {
+                title: 'Local filter - toUpperCase',
+                text: 'example'
+            }
+        }
 
-    const toUpperCase = function (string: string): string {
-      return string.toUpperCase()
-    }
+        const toUpperCase = (string: string): string => string.toUpperCase()
+        const meta = useRouteMeta()
 
-    const meta = useRouteMeta()
-
-    return {
-      texts,
-      toUpperCase,
-      meta
+        return {
+            texts,
+            toUpperCase,
+            meta
+        }
     }
-  }
 })
 </script>
