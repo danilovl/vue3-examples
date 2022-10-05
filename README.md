@@ -18,6 +18,7 @@ Examples
 * Filters
 * Key code
 * Emit
+* Emit computed
 
 ## Project setup
 ```

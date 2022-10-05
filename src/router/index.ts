@@ -20,7 +20,7 @@ const routes: Array<RouteRecordRaw> = [
             display: false,
             title: 'Todo'
         },
-        component: () => import('@/layouts/DefaultLayout.vue'),
+        component: (): Promise<any> => import('@/layouts/DefaultLayout.vue'),
         children: [
             {
                 path: 'list',
@@ -30,7 +30,7 @@ const routes: Array<RouteRecordRaw> = [
                     display: true,
                     title: 'Todo list'
                 },
-                component: () => import('@/views/todo/List.vue'),
+                component: (): Promise<any> => import('@/views/todo/List.vue'),
             },
             {
                 path: 'detail/:id(\\d+)',
@@ -39,7 +39,7 @@ const routes: Array<RouteRecordRaw> = [
                     display: false,
                     title: 'Todo detail'
                 },
-                component: () => import('@/views/todo/Detail.vue')
+                component: (): Promise<any> => import('@/views/todo/Detail.vue')
             },
             {
                 path: 'edit/:id(\\d+)',
@@ -48,7 +48,7 @@ const routes: Array<RouteRecordRaw> = [
                     display: false,
                     title: 'Todo edit'
                 },
-                component: () => import('@/views/todo/Edit.vue')
+                component: (): Promise<any> => import('@/views/todo/Edit.vue')
             }
         ]
     },
@@ -60,7 +60,7 @@ const routes: Array<RouteRecordRaw> = [
             display: true,
             title: 'Dynamic layout'
         },
-        component: () => import('@/views/dynamic-layout/DynamicLayout.vue'),
+        component: (): Promise<any> => import('@/views/dynamic-layout/DynamicLayout.vue'),
         children: [
             {
                 path: 'blog',
@@ -70,7 +70,7 @@ const routes: Array<RouteRecordRaw> = [
                     title: 'Blog layout',
                     layout: 'blog'
                 },
-                component: () => import('@/views/dynamic-layout/DynamicLayout.vue')
+                component: (): Promise<any> => import('@/views/dynamic-layout/DynamicLayout.vue')
             },
             {
                 path: 'simple',
@@ -80,7 +80,7 @@ const routes: Array<RouteRecordRaw> = [
                     title: 'Simple layout',
                     layout: 'simple'
                 },
-                component: () => import('@/views/dynamic-layout/DynamicLayout.vue')
+                component: (): Promise<any> => import('@/views/dynamic-layout/DynamicLayout.vue')
             }
         ]
     },
@@ -92,7 +92,7 @@ const routes: Array<RouteRecordRaw> = [
             display: true,
             title: 'Counter'
         },
-        component: () => import('@/views/Counter.vue')
+        component: (): Promise<any> => import('@/views/Counter.vue')
     },
     {
         path: '/counter-mixins',
@@ -102,7 +102,7 @@ const routes: Array<RouteRecordRaw> = [
             display: true,
             title: 'Counter mixins'
         },
-        component: () => import('@/views/CounterMixins.vue')
+        component: (): Promise<any> => import('@/views/CounterMixins.vue')
     },
     {
         path: '/form-input-bindings',
@@ -112,7 +112,7 @@ const routes: Array<RouteRecordRaw> = [
             display: true,
             title: 'Form input bindings'
         },
-        component: () => import('@/views/FormInput.vue')
+        component: (): Promise<any> => import('@/views/FormInput.vue')
     },
     {
         path: '/lifecycle-hooks',
@@ -122,7 +122,7 @@ const routes: Array<RouteRecordRaw> = [
             display: true,
             title: 'Lifecycle hooks'
         },
-        component: () => import('@/views/LifecycleHooks.vue')
+        component: (): Promise<any> => import('@/views/LifecycleHooks.vue')
     },
     {
         path: '/axios',
@@ -132,7 +132,7 @@ const routes: Array<RouteRecordRaw> = [
             display: true,
             title: 'Axios'
         },
-        component: () => import('@/views/Axios.vue')
+        component: (): Promise<any> => import('@/views/Axios.vue')
     },
     {
         path: '/teleport',
@@ -142,7 +142,7 @@ const routes: Array<RouteRecordRaw> = [
             display: true,
             title: 'Teleport'
         },
-        component: () => import('@/views/Teleport.vue')
+        component: (): Promise<any> => import('@/views/Teleport.vue')
     },
     {
         path: '/suspense',
@@ -152,7 +152,7 @@ const routes: Array<RouteRecordRaw> = [
             display: true,
             title: 'Suspense'
         },
-        component: () => import('@/views/suspense/Suspense.vue')
+        component: (): Promise<any> => import('@/views/suspense/Suspense.vue')
     },
     {
         path: '/provide-and-inject',
@@ -162,7 +162,7 @@ const routes: Array<RouteRecordRaw> = [
             display: true,
             title: 'Provide and inject'
         },
-        component: () => import('@/views/provide-and-inject/ProvideAndInject.vue')
+        component: (): Promise<any> => import('@/views/provide-and-inject/ProvideAndInject.vue')
     },
     {
         path: '/multiple-v-models',
@@ -172,7 +172,7 @@ const routes: Array<RouteRecordRaw> = [
             display: true,
             title: 'Multiple v-models'
         },
-        component: () => import('@/views/multiple-v-models/MultipleModels.vue')
+        component: (): Promise<any> => import('@/views/multiple-v-models/MultipleModels.vue')
     },
     {
         path: '/vee-validate',
@@ -182,7 +182,7 @@ const routes: Array<RouteRecordRaw> = [
             display: true,
             title: 'Vee validate'
         },
-        component: () => import('@/views/VeeValidate.vue')
+        component: (): Promise<any> => import('@/views/VeeValidate.vue')
     },
     {
         path: '/filters',
@@ -192,7 +192,7 @@ const routes: Array<RouteRecordRaw> = [
             display: true,
             title: 'Filters'
         },
-        component: () => import('@/views/Filters.vue')
+        component: (): Promise<any> => import('@/views/Filters.vue')
     },
     {
         path: '/key-code',
@@ -202,7 +202,7 @@ const routes: Array<RouteRecordRaw> = [
             display: true,
             title: 'Key code'
         },
-        component: () => import('@/views/KeyCode.vue')
+        component: (): Promise<any> => import('@/views/KeyCode.vue')
     },
     {
         path: '/emits',
@@ -212,7 +212,17 @@ const routes: Array<RouteRecordRaw> = [
             display: true,
             title: 'Emits'
         },
-        component: () => import('@/views/emits/Emits.vue')
+        component: (): Promise<any> => import('@/views/emits/Emits.vue')
+    } ,
+    {
+        path: '/emits-computed',
+        name: 'emits_computed',
+        meta: {
+            position: 16,
+            display: true,
+            title: 'Emits computed'
+        },
+        component: (): Promise<any> => import('@/views/emits-computed/EmitsComputed.vue')
     }
 ]
 
