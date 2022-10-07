@@ -3,7 +3,6 @@
         <p>Has published books in child component by defineProps:</p>
         <span>{{ publishedBooksMessage }}</span>
         <br>
-
         <p>
             <button @click="clearBooks()">clear books emit in parent component</button>
         </p>

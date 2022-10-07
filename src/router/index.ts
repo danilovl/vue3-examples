@@ -17,6 +17,7 @@ const routes: Array<RouteRecordRaw> = [
         path: '/todo',
         name: 'todo',
         meta: {
+            position: 1,
             display: false,
             title: 'Todo'
         },
@@ -218,11 +219,31 @@ const routes: Array<RouteRecordRaw> = [
         path: '/emits-computed',
         name: 'emits_computed',
         meta: {
-            position: 16,
+            position: 17,
             display: true,
             title: 'Emits computed'
         },
         component: (): Promise<any> => import('@/views/emits-computed/EmitsComputed.vue')
+    },
+    {
+        path: '/directives',
+        name: 'directives',
+        meta: {
+            position: 18,
+            display: true,
+            title: 'Directives'
+        },
+        component: (): Promise<any> => import('@/views/Directives.vue')
+    },
+    {
+        path: '/custom-directives',
+        name: 'custom_directives',
+        meta: {
+            position: 19,
+            display: true,
+            title: 'Custom directives'
+        },
+        component: (): Promise<any> => import('@/views/CustomDirectives.vue')
     }
 ]
 

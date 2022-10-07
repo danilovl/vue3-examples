@@ -2,7 +2,6 @@
     <div>
         <h1>{{ meta.title }}</h1>
     </div>
-
     <div class="col-md-12">
         <div class="card mb-4 box-shadow">
             <p>Has published books in parent component:</p>

@@ -21,7 +21,7 @@ export default defineComponent({
         const todos = await axios
             .get(apiConstant.apiTodoUrl)
             .then((response): Promise<void | null> =>
-                  sleep(2000).then((): any => response.data)
+                sleep(2000).then((): any => response.data)
             )
 
         return {

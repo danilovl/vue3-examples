@@ -19,6 +19,8 @@ Examples
 * Key code
 * Emit
 * Emit computed
+* Directives
+* Custom directives
 
 ## Project setup
 ```
