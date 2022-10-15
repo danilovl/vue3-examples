@@ -1,45 +1,45 @@
 <template>
-  <div class="col-md-12">
-    <div class="card mb-4 box-shadow" :class="todoCardClass">
-      <h5 class="card-header" :class="{done: todo.done}">{{ todo.title }}</h5>
+    <div class="col-md-12">
+        <div class="card mb-4 box-shadow" :class="todoCardClass">
+            <h5 class="card-header" :class="{done: todo.done}">{{ todo.title }}</h5>
 
-      <div class="card-body">
-        <p class="card-text">{{ todo.description }}</p>
-        <div class="custom-control custom-checkbox mb-1">
-          <input type="checkbox"
-                 class="custom-control-input"
-                 :id="'customCheck' + todo.id"
-                 v-model="todoDone"
-          >
-          <label class="custom-control-label" :for="'customCheck' + todo.id">done</label>
+            <div class="card-body">
+                <p class="card-text">{{ todo.description }}</p>
+                <div class="custom-control custom-checkbox mb-1">
+                    <input type="checkbox"
+                           class="custom-control-input"
+                           :id="'customCheck' + todo.id"
+                           v-model="todoDone"
+                    >
+                    <label class="custom-control-label" :for="'customCheck' + todo.id">done</label>
+                </div>
+
+                <router-link
+                    class="btn btn-primary mr-2"
+                    v-if="showDetailBtn === true"
+                    :to="{name: 'todo_detail', params: { id: todo.id }}"
+                >
+                    detail
+                </router-link>
+
+                <router-link
+                    class="btn btn-warning mr-2"
+                    v-if="showEditBtn === true"
+                    :to="{name: 'todo_edit', params: { id: todo.id }}"
+                >
+                    edit
+                </router-link>
+
+                <a href="#"
+                   class="btn btn-danger"
+                   v-if="showDeleteBtn === true"
+                   @click.prevent="removeTodo(todo.id)"
+                >
+                    delete
+                </a>
+            </div>
         </div>
-
-        <router-link
-            class="btn btn-primary mr-2"
-            v-if="showDetailBtn === true"
-            :to="{name: 'todo_detail', params: { id: todo.id }}"
-        >
-          detail
-        </router-link>
-
-        <router-link
-            class="btn btn-warning mr-2"
-            v-if="showEditBtn === true"
-            :to="{name: 'todo_edit', params: { id: todo.id }}"
-        >
-          edit
-        </router-link>
-
-        <a href="#"
-           class="btn btn-danger"
-           v-if="showDeleteBtn === true"
-           @click.prevent="removeTodo(todo.id)"
-        >
-          delete
-        </a>
-      </div>
     </div>
-  </div>
 </template>
 
 <script lang="ts">

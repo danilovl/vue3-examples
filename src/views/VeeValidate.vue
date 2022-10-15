@@ -1,71 +1,75 @@
 <template>
-  <div>
-    <h1>{{ meta.title }}</h1>
-  </div>
-  <div class="row justify-content-center">
-    <div class="col-md-4">
-      <form>
-        <div class="form-group">
-          <label for="name">Full name</label>
-          <input
-              type="text"
-              id="name"
-              class="form-control"
-              :class="fieldValidationClass('name')"
-              v-model="address.name"
-          />
-          <span>{{ addressErrorMessage.name }}</span>
-        </div>
-        <div class="form-group">
-          <label for="addressLine">Address</label>
-          <input
-              type="text"
-              id="addressLine"
-              class="form-control"
-              :class="fieldValidationClass('addressLine')"
-              v-model="address.addressLine"
-          />
-          <span>{{ addressErrorMessage.addressLine }}</span>
-        </div>
-        <div class="form-group">
-          <label for="streetNumber">Street</label>
-          <input
-              type="text"
-              id="streetNumber"
-              class="form-control"
-              :class="fieldValidationClass('streetNumber')"
-              v-model="address.streetNumber"
-          />
-          <span>{{ addressErrorMessage.streetNumber }}</span>
-        </div>
-        <div class="form-group">
-          <label for="town">Town</label>
-          <input
-              type="text"
-              id="town"
-              class="form-control"
-              :class="fieldValidationClass('town')"
-              v-model="address.town"
-          />
-          <span>{{ addressErrorMessage.town }}</span>
-        </div>
-        <div class="form-group">
-          <label for="homeAddress">is home address</label>
-          <input
-              type="checkbox"
-              id="homeAddress"
-              class="form-control"
-              v-model="address.homeAddress"
-          />
-        </div>
-      </form>
+    <div>
+        <h1>{{ meta.title }}</h1>
     </div>
-  </div>
-  <div class="row justify-content-center" v-if="isFormValid()">
-    <div class="col-4">
-      <pre :style="{ 'text-align': 'left' }">{{ JSON.stringify(address, null, 2) }}</pre>
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <form>
+                <div class="form-group">
+                    <label for="name">Full name</label>
+                    <input
+                        type="text"
+                        id="name"
+                        class="form-control"
+                        :class="fieldValidationClass('name')"
+                        v-model="address.name"
+                    />
+                    <div>{{ addressErrorMessage.name }}</div>
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="addressLine">Address</label>
+                    <input
+                        type="text"
+                        id="addressLine"
+                        class="form-control"
+                        :class="fieldValidationClass('addressLine')"
+                        v-model="address.addressLine"
+                    />
+                    <div>{{ addressErrorMessage.addressLine }}</div>
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="streetNumber">Street</label>
+                    <input
+                        type="text"
+                        id="streetNumber"
+                        class="form-control"
+                        :class="fieldValidationClass('streetNumber')"
+                        v-model="address.streetNumber"
+                    />
+                    <div>{{ addressErrorMessage.streetNumber }}</div>
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="town">Town</label>
+                    <input
+                        type="text"
+                        id="town"
+                        class="form-control"
+                        :class="fieldValidationClass('town')"
+                        v-model="address.town"
+                    />
+                    <div>{{ addressErrorMessage.town }}</div>
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="homeAddress">is home address</label>
+                    <input
+                        type="checkbox"
+                        id="homeAddress"
+                        class="form-control"
+                        v-model="address.homeAddress"
+                    />
+                </div>
+            </form>
+        </div>
     </div>
-  </div>
+    <div class="row justify-content-center" v-if="isFormValid()">
+        <div class="col-4">
+            <pre :style="{ 'text-align': 'left' }">{{ JSON.stringify(address, null, 2) }}</pre>
+        </div>
+    </div>
 </template>
 
 <script lang="ts">

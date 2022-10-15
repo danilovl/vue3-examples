@@ -1,11 +1,11 @@
 <template>
-  <div>
-    <input type="button"
-           value="add object to cart"
-           class="btn btn-outline-success my-2 my-sm-0"
-           v-on:click="$emit('AddToCartObject', getCartItem())"
-    >
-  </div>
+    <div>
+        <input type="button"
+               value="add object to cart"
+               class="btn btn-outline-success my-2 my-sm-0"
+               v-on:click="$emit('AddToCartObject', getCartItem())"
+        >
+    </div>
 </template>
 
 <script lang="ts">

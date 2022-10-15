@@ -1,13 +1,13 @@
 <template>
-  <back-link text="back to todo detail" route-name="todo_detail" :route-param="{id: todo.id}"/>
+    <back-link text="back to todo detail" route-name="todo_detail" :route-param="{id: todo.id}"/>
 
-  <input type="text" class="form-control mr-sm-2 mb-2" v-model="todo.title"/>
-  <textarea class="form-control mr-sm-2 mb-2" v-model="todo.description"/>
-  <input type="button"
-         class="btn btn-outline-success my-2 my-sm-0"
-         @click="editTodo"
-         value="edit"
-  >
+    <input type="text" class="form-control mr-sm-2 mb-2" v-model="todo.title"/>
+    <textarea class="form-control mr-sm-2 mb-2" v-model="todo.description"/>
+    <input type="button"
+           class="btn btn-outline-success my-2 my-sm-0"
+           @click="editTodo"
+           value="edit"
+    >
 </template>
 
 <script lang="ts">

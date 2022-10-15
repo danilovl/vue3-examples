@@ -1,8 +1,8 @@
 <template>
-  <div class="hello">
-    <h1>{{ message }}</h1>
-    <p>{{ description }}</p>
-  </div>
+    <div class="hello">
+        <h1>{{ message }}</h1>
+        <p>{{ description }}</p>
+    </div>
 </template>
 
 <script lang="ts">

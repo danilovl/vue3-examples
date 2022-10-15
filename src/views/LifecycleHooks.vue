@@ -1,16 +1,16 @@
 <template>
-  <div>
-    <h1>{{ meta.title }}</h1>
-  </div>
-  <div class="col-md-12">
-    <div class="card mb-4 box-shadow">
-      <h5 class="card-header">Open console</h5>
-      <div class="card-body">
-        <input v-model="dataMessage" placeholder="data message"/>
-        <p>Data message is: {{ dataMessage }}</p>
-      </div>
+    <div>
+        <h1>{{ meta.title }}</h1>
     </div>
-  </div>
+    <div class="col-md-12">
+        <div class="card mb-4 box-shadow">
+            <h5 class="card-header">Open console</h5>
+            <div class="card-body">
+                <input v-model="dataMessage" placeholder="data message"/>
+                <p>Data message is: {{ dataMessage }}</p>
+            </div>
+        </div>
+    </div>
 </template>
 
 <script lang="ts">

@@ -1,26 +1,26 @@
 <template>
-  <div>
-    <h1>Axios</h1>
-  </div>
-  <div class="col-md-12">
-    <div class="card mb-4 box-shadow">
-      <h5 class="card-header">Axios</h5>
-      <div class="card-body" v-if="isLoading === true">
-        <p>
-          <a :href="apiUrl" class="href">Loading from here</a>
-        </p>
-        <p>
-          Process: {{ processInformation }}
-        </p>
-      </div>
-      <div class="card-body" v-else>
-        <h1>Fake online REST API data</h1>
-        <p v-for="todo in todos" :key="todo.title">
-          {{ $filters.capitalizeFirstLetter(todo.title) }}
-        </p>
-      </div>
+    <div>
+        <h1>Axios</h1>
     </div>
-  </div>
+    <div class="col-md-12">
+        <div class="card mb-4 box-shadow">
+            <h5 class="card-header">Axios</h5>
+            <div class="card-body" v-if="isLoading === true">
+                <p>
+                    <a :href="apiUrl" class="href">Loading from here</a>
+                </p>
+                <p>
+                    Process: {{ processInformation }}
+                </p>
+            </div>
+            <div class="card-body" v-else>
+                <h1>Fake online REST API data</h1>
+                <p v-for="todo in todos" :key="todo.title">
+                    {{ $filters.capitalizeFirstLetter(todo.title) }}
+                </p>
+            </div>
+        </div>
+    </div>
 </template>
 
 <script lang="ts">

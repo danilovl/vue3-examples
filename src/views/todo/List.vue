@@ -1,10 +1,10 @@
 <template>
-  <div class="row">
-    <todo-item v-for="todo in todos" :todo="todo" :key="todo.id"/>
-  </div>
-  <div class="row">
-    <create-todo-item/>
-  </div>
+    <div class="row">
+        <todo-item v-for="todo in todos" :todo="todo" :key="todo.id"/>
+    </div>
+    <div class="row">
+        <create-todo-item/>
+    </div>
 </template>
 
 <script lang="ts">

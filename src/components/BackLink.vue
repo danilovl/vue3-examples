@@ -1,9 +1,9 @@
 <template>
-  <div class="navbar navbar-expand-lg navbar-light bg-light mb-2">
-    <router-link :to="{name: routeName, params: routeParam}" class="btn btn-primary">
-      {{ text }}
-    </router-link>
-  </div>
+    <div class="navbar navbar-expand-lg navbar-light bg-light mb-2">
+        <router-link :to="{name: routeName, params: routeParam}" class="btn btn-primary">
+            {{ text }}
+        </router-link>
+    </div>
 </template>
 
 <script lang="ts">

@@ -32,11 +32,16 @@ import AddToCart from '@/views/emits/AddToCart.vue'
 import AddToCartObject from '@/views/emits/AddToCartObject.vue'
 import useRouteMeta from '@/hooks/useRouteMeta'
 
+type ItemObject = {
+    id: number;
+    title: string;
+}
+
 interface SetupData {
     cart: string[];
     cartObject: object[];
     addToCart: () => number;
-    addToCartObject: (item: object) => number;
+    addToCartObject: (item: ItemObject) => number;
     meta: RouteMeta;
 }
 
@@ -51,7 +56,7 @@ export default defineComponent({
         const cartObject = reactive<object[]>([])
 
         const addToCart = (): number => cart.push('item')
-        const addToCartObject = (item: object): number => cartObject.push(item)
+        const addToCartObject = (item: ItemObject): number => cartObject.push(item)
         const meta = useRouteMeta()
 
         return {
