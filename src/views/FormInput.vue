@@ -134,7 +134,7 @@ export default defineComponent({
         const sumState = reactive<StateReactive>({
             numbers: Array.from(Array(10).keys()),
             checkedNumbers: [],
-            sum: computed(() => sumState.checkedNumbers.reduce((a: number, b: number): number => a + b, 0))
+            sum: computed((): number => sumState.checkedNumbers.reduce((a: number, b: number): number => a + b, 0))
         }) as SumState
 
         const meta = useRouteMeta()

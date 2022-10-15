@@ -115,7 +115,7 @@ export default defineComponent({
 
         const state = reactive<StateReactive>({
             metas: meta.metaRef,
-            layout: computed<string | null>(() => state.metas.layout !== undefined ? state.metas.layout + '-layout' : null)
+            layout: computed<string | null>((): string | null => state.metas.layout !== undefined ? state.metas.layout + '-layout' : null)
         }) as State
 
         return {

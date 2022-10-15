@@ -83,6 +83,6 @@ const watchModels = {
 }
 
 for (const [key, value] of objectEntries(watchModels)) {
-    watch(value, (value) => emit(`update:${key}`, value))
+    watch(value, (value): void => emit(`update:${key}`, value))
 }
 </script>

@@ -81,13 +81,13 @@ export default defineComponent({
         const {removeTodo, updateTodoDone} = useTodos()
         const todoDone = ref<boolean>(props.todo ? props.todo.done : false)
 
-        watch(todoDone, () => {
+        watch(todoDone, (): void => {
             if (props.todo !== undefined) {
                 updateTodoDone(props.todo.id, todoDone.value)
             }
         })
 
-        const todoCardClass = computed<string>(() => todoDone.value === true ? 'green' : 'red')
+        const todoCardClass = computed<string>((): string => todoDone.value === true ? 'green' : 'red')
 
         return {
             removeTodo,
