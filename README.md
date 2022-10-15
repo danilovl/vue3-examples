@@ -19,6 +19,7 @@ Examples
 * Key code
 * Emit
 * Emit computed
+* Emit v-models
 * Directives
 * Custom directives
 

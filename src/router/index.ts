@@ -226,10 +226,20 @@ const routes: Array<RouteRecordRaw> = [
         component: (): Promise<any> => import('@/views/emits-computed/EmitsComputed.vue')
     },
     {
+        path: '/emits-v-model',
+        name: 'emits_v_model',
+        meta: {
+            position: 18,
+            display: true,
+            title: 'Emits v-model'
+        },
+        component: (): Promise<any> => import('@/views/emits-v-model/EmitsModel.vue')
+    },
+    {
         path: '/directives',
         name: 'directives',
         meta: {
-            position: 18,
+            position: 19,
             display: true,
             title: 'Directives'
         },
@@ -239,7 +249,7 @@ const routes: Array<RouteRecordRaw> = [
         path: '/custom-directives',
         name: 'custom_directives',
         meta: {
-            position: 19,
+            position: 20,
             display: true,
             title: 'Custom directives'
         },
