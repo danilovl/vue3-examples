@@ -254,6 +254,16 @@ const routes: Array<RouteRecordRaw> = [
             title: 'Custom directives'
         },
         component: (): Promise<any> => import('@/views/CustomDirectives.vue')
+    },
+    {
+        path: '/ref-attribute',
+        name: 'ref_attribute',
+        meta: {
+            position: 20,
+            display: true,
+            title: 'Ref attribute'
+        },
+        component: (): Promise<any> => import('@/views/RefAttribute.vue')
     }
 ]
 

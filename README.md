@@ -22,6 +22,7 @@ Examples
 * Emit v-models
 * Directives
 * Custom directives
+* Ref attribute
 
 ## Project setup
 ```
