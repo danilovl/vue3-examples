@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  node:
+    build:
+      context: ./
+      dockerfile: ./docker/node/Dockerfile
+    volumes:
+      - "./:/var/www/html/app"
+    working_dir: /var/www/html/app
+    ports:
+      - "5173:5173"
