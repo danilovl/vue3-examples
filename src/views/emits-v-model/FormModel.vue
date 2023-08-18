@@ -37,6 +37,15 @@
             />
         </div>
         <div class="form-group">
+            <label for="country">Country</label>
+            <input
+                type="text"
+                id="country"
+                class="form-control"
+                v-model="country"
+            />
+        </div>
+        <div class="form-group">
             <label for="homeAddress">is home address</label>
             <input
                 type="checkbox"
@@ -57,6 +66,7 @@ const props = defineProps<{
     addressLine: string
     streetNumber: string
     town: string
+    country: string
     homeAddress: boolean
 }>()
 
@@ -65,6 +75,7 @@ const emit = defineEmits([
     'update:addressLine',
     'update:streetNumber',
     'update:town',
+    'update:country',
     'update:homeAddress'
 ])
 
@@ -72,6 +83,7 @@ const name = ref<string>(props.name)
 const addressLine = ref<string>(props.addressLine)
 const streetNumber = ref<string>(props.streetNumber)
 const town = ref<string>(props.town)
+const country = ref<string>(props.country)
 const homeAddress = ref<boolean>(props.homeAddress)
 
 const watchModels = {
@@ -79,6 +91,7 @@ const watchModels = {
     addressLine: addressLine,
     streetNumber: streetNumber,
     town: town,
+    country: country,
     homeAddress: homeAddress
 }
 

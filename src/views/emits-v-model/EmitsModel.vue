@@ -33,6 +33,7 @@ interface Address {
     addressLine: string;
     streetNumber: string;
     town: string;
+    country: string;
     homeAddress: boolean;
 }
 
@@ -52,6 +53,7 @@ export default defineComponent({
             addressLine: '',
             streetNumber: '',
             town: '',
+            country: '',
             homeAddress: false
         }) as Address
 
