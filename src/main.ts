@@ -2,7 +2,7 @@ import {createApp} from 'vue'
 import App from './App.vue'
 import router from './router'
 import {createPinia} from 'pinia'
-import addFilters from './filters'
+import addFilters from './filter'
 import './assets/style.scss'
 
 const app = createApp(App)
