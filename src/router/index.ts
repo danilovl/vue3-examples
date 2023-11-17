@@ -264,6 +264,16 @@ const routes: Array<RouteRecordRaw> = [
             title: 'Ref attribute'
         },
         component: (): Promise<any> => import('@/view/RefAttribute.vue')
+    },
+    {
+        path: '/slot',
+        name: 'slot',
+        meta: {
+            position: 21,
+            display: true,
+            title: 'Slot'
+        },
+        component: (): Promise<any> => import('@/view/slot/Slot.vue')
     }
 ]
 
