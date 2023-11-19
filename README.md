@@ -23,6 +23,7 @@ Examples
 * Directives
 * Custom directives
 * Ref attribute
+* Slot
 
 ## Project setup
 ```
