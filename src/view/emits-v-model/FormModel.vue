@@ -59,7 +59,7 @@
 
 <script setup lang="ts">
 import {ref, watch} from 'vue'
-import {objectEntries} from 'src/helper'
+import {objectEntries} from '@/helper'
 
 const props = defineProps<{
     name: string
