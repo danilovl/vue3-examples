@@ -1,8 +1,9 @@
 <template>
-  <div class="container">
     <nav-bar/>
-    <router-view/>
-  </div>
+
+    <main class="content">
+        <router-view/>
+    </main>
 </template>
 
 <script lang="ts">

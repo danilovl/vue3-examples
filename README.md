@@ -1,6 +1,8 @@
 # Examples for Vue3 + Pinia + TypeScript
 Demonstrate new features for Vue 3 and how to use them
 
+![Alt text](/readme/homepage.png?raw=true "Homepage")
+
 Examples
 ------------
 * Todo (CRUD)

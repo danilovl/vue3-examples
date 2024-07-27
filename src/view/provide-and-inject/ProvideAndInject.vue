@@ -6,7 +6,7 @@
         <div class="card mb-4 box-shadow">
             <h5 class="card-header">Parent component</h5>
             <div class="card-body">
-                <input v-model="injectMessage" placeholder="reactive message"/>
+                <input type="text" v-model="injectMessage" placeholder="reactive message"/>
                 <p>reactive message: {{ injectMessage }}</p>
             </div>
         </div>

@@ -4,10 +4,10 @@
     </div>
     <div>
         <p>
-            <input v-focus/>
+            <input type="text" v-focus/>
         </p>
         <p>
-            <input v-attribute="{ id: 'directive-input', text: 'hello!' }"/>
+            <input type="text" v-attribute="{ id: 'directive-input', text: 'hello!' }"/>
         </p>
         <p>
             <button v-alert="'hello!'">alert</button>

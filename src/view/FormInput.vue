@@ -6,7 +6,7 @@
         <div class="card mb-4 box-shadow">
             <h5 class="card-header">Data message</h5>
             <div class="card-body">
-                <input v-model="dataMessage" placeholder="data message"/>
+                <input type="text" v-model="dataMessage" placeholder="data message"/>
                 <p>Data message is: {{ dataMessage }}</p>
             </div>
         </div>
@@ -15,7 +15,7 @@
         <div class="card mb-4 box-shadow">
             <h5 class="card-header">Ref message</h5>
             <div class="card-body">
-                <input v-model="refMessage" placeholder="ref message"/>
+                <input type="text" v-model="refMessage" placeholder="ref message"/>
                 <p>Ref message is: {{ refMessage }}</p>
             </div>
         </div>

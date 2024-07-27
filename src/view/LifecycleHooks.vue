@@ -6,7 +6,7 @@
         <div class="card mb-4 box-shadow">
             <h5 class="card-header">Open console</h5>
             <div class="card-body">
-                <input v-model="dataMessage" placeholder="data message"/>
+                <input type="text" v-model="dataMessage" placeholder="data message"/>
                 <p>Data message is: {{ dataMessage }}</p>
             </div>
         </div>

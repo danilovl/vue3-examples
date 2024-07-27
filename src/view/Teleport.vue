@@ -2,6 +2,9 @@
     <div>
         <h1>{{ meta.title }}</h1>
     </div>
+
+    <div id="telepot-modal"></div>
+
     <div class="mt-4">
         <button @click="isModalOpen = true"
                 v-if="isModalOpen === false"
@@ -10,7 +13,7 @@
             Open screen modal
         </button>
 
-        <teleport to="body">
+        <teleport to="#telepot-modal">
             <div v-if="isModalOpen">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">

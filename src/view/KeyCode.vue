@@ -4,6 +4,7 @@
     </div>
     <div class="col-md-12">
         <input
+            type="text"
             @keydown="keyCodeEvent($event)"
             @keyup="keyCodeEvent($event)"
             @keypress="keyCodeEvent($event)"

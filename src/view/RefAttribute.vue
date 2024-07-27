@@ -4,7 +4,7 @@
     </div>
     <div>
         <p>
-            <input ref="input"/>
+            <input type="text" ref="input"/>
         </p>
     </div>
 </template>
