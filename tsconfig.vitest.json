@@ -6,7 +6,8 @@
     "lib": [],
     "types": [
       "node",
-      "jsdom"
+      "jsdom",
+      "vitest/globals"
     ]
   }
 }

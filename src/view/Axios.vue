@@ -7,14 +7,14 @@
             <h5 class="card-header">Axios</h5>
             <div class="card-body" v-if="isLoading === true">
                 <p>
-                    <a :href="apiUrl" class="href">Loading from here</a>
+                    <a :href="apiUrl" class="href" id="loading-from-here">Loading from here</a>
                 </p>
-                <p>
+                <p id="process-information">
                     Process: {{ processInformation }}
                 </p>
             </div>
-            <div class="card-body" v-else>
-                <h1>Fake online REST API data</h1>
+            <div id="todos-list" class="card-body" v-else>
+                <h2>Fake online REST API data</h2>
                 <p v-for="todo in todos" :key="todo.title">
                     {{ $filters.capitalizeFirstLetter(todo.title) }}
                 </p>
