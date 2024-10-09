@@ -1,28 +1,20 @@
-import {createRouter, createWebHistory} from 'vue-router'
 import {mount} from '@vue/test-utils'
 import {describe, it, expect, beforeEach, vi, afterEach} from 'vitest'
 import axios from 'axios'
-import {routes} from '@/router/index'
 import {sleep} from '@/helper'
 import Axios from '@/view/Axios.vue'
+import router from '../router-mock'
 
 vi.mock('axios')
 const mockAxios = axios as vi.Mocked<typeof axios>
 const usersMock = [{id: 1, title: 'Task 1'}, {id: 2, title: 'Task 2'}]
 
-let router
-
 beforeEach(async () => {
     mockAxios.get.mockResolvedValue({
-        data: usersMock,
+        data: usersMock
     })
 
-    router = createRouter({
-        history: createWebHistory(),
-        routes: routes
-    })
-
-    router.push('/axios')
+    await router.push('/axios')
     await router.isReady()
 })
 
