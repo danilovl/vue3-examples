@@ -4,7 +4,7 @@
     </div>
     <div>
         <p>
-            <input type="text" v-focus/>
+            <input id="text-focus" type="text" v-focus/>
         </p>
         <p>
             <input type="text" v-attribute="{ id: 'directive-input', text: 'hello!' }"/>
@@ -23,6 +23,7 @@ const meta = useRouteMeta()
 const vFocus = {
     mounted: (element: HTMLInputElement): void => {
         element.focus()
+        element.classList.add('text-focus')
     }
 }
 
