@@ -5,11 +5,11 @@
     <div>
         <strong>v-once</strong>
         <p>Initial msg with v-once:</p>
-        <p v-once>{{ message }}</p>
+        <p id="once-message" v-once>{{ message }}</p>
 
-        <button @click="updateMessage">Change message</button>
-        <p> Current state msg:</p>
-        <p>{{ message }}</p>
+        <button id="update-message" @click="updateMessage">Change message</button>
+        <p>Current state msg:</p>
+        <p id="current-state-message">{{ message }}</p>
     </div>
     <br>
     <div>
