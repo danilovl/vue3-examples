@@ -1,5 +1,6 @@
 {
   "name": "vue3-example",
+  "type": "module",
   "version": "0.0.0",
   "scripts": {
     "dev": "vite --host --port 5173",
