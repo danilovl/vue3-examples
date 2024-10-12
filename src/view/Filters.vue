@@ -4,14 +4,14 @@
             <h1>{{ meta.title }}</h1>
         </div>
         <div class="card mb-4 box-shadow">
-            <h5 class="card-header">{{ texts.global.title }}</h5>
-            <div class="card-body">
+            <h5 id="global-title" class="card-header">{{ texts.global.title }}</h5>
+            <div id="filter-global-title" class="card-body">
                 {{ texts.global.text }} => {{ $filters.capitalizeFirstLetter(texts.global.text) }}
             </div>
         </div>
         <div class="card mb-4 box-shadow">
-            <h5 class="card-header">{{ texts.local.title }}</h5>
-            <div class="card-body">
+            <h5 id="local-title" class="card-header">{{ texts.local.title }}</h5>
+            <div id="filter-local-title" class="card-body">
                 {{ texts.local.text }} => {{ toUpperCase(texts.local.text) }}
             </div>
         </div>
