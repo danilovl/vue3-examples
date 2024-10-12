@@ -1,0 +1,9 @@
+name: Run vitest
+description: Run vitest
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Run vitest
+      shell: bash
+      run: npm run test:unit

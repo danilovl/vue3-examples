@@ -1,3 +1,5 @@
+[![vitest](https://github.com/danilovl/vue3-examples/actions/workflows/vitest.yml/badge.svg)](https://github.com/danilovl/vue3-examples/actions/workflows/vitest.yml)
+
 # Examples for Vue3 + Pinia + TypeScript
 Demonstrate new features for Vue 3 and how to use them
 
