@@ -18,7 +18,7 @@ beforeEach(async () => {
 
 describe('Filters.vue', () => {
     it('renders meta title from useRouteMeta', () => {
-        expect(wrapper.find('h1').text()).toBe('Filters')
+        expect(wrapper.find('#global-title').text()).toContain('Global filter')
     })
 
     it('applies global filter correctly', () => {
@@ -26,7 +26,8 @@ describe('Filters.vue', () => {
         expect(globalText).toContain('Global filter - capitalizeFirstLetter')
 
         const filterGlobalText = wrapper.find('#filter-global-title').text()
-        expect(filterGlobalText).toContain('example text => Example text')
+        expect(filterGlobalText).toContain('Original: example text')
+        expect(filterGlobalText).toContain('Filtered: Example text')
     })
 
     it('applies local filter correctly', () => {
@@ -34,6 +35,7 @@ describe('Filters.vue', () => {
         expect(globalText).toContain('Local filter - toUpperCase')
 
         const filterLocalText = wrapper.find('#filter-local-title').text()
-        expect(filterLocalText).toContain('example => EXAMPLE')
+        expect(filterLocalText).toContain('Original: example')
+        expect(filterLocalText).toContain('Filtered: EXAMPLE')
     })
 })

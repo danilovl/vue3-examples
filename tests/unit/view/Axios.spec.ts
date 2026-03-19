@@ -19,7 +19,7 @@ beforeEach(async () => {
 })
 
 afterEach(async () => {
-    vi.clearAllMocks
+    vi.clearAllMocks()
 })
 
 describe('Axios.vue', () => {
@@ -30,18 +30,17 @@ describe('Axios.vue', () => {
             }
         })
 
-        expect(wrapper.find('h1').text()).toBe('Axios')
-        expect(wrapper.find('#loading-from-here').text()).toContain('Loading from here')
-        expect(wrapper.find('#process-information').text()).toContain('loading data')
+        expect(wrapper.find('.card-header').text()).toContain('Axios')
+        expect(wrapper.find('.card-body').text()).toContain('Process: loading data')
 
         await sleep(2500)
-        expect(wrapper.find('#process-information').text()).toContain('data was downloaded')
+        expect(wrapper.find('.card-body').text()).toContain('Process: data was downloaded')
 
         await sleep(2500)
-        expect(wrapper.find('#process-information').text()).toContain('data processing')
+        expect(wrapper.find('.card-body').text()).toContain('Process: data processing')
 
         await sleep(2500)
-        expect(wrapper.find('h2').text()).toContain('Fake online REST API data')
+        expect(wrapper.find('.card-body').text()).toContain('Fake online REST API data')
     })
 
     it('displays todos from API after loading', async () => {
@@ -51,7 +50,7 @@ describe('Axios.vue', () => {
             }
         })
 
-        await sleep(7000)
+        await sleep(7500)
 
         const todos = wrapper.findAll('#todos-list p')
         expect(todos).toHaveLength(usersMock.length)

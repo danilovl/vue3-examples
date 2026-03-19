@@ -18,7 +18,7 @@ beforeEach(async () => {
 
 describe('Counter.vue', () => {
     it('renders meta title from useRouteMeta', () => {
-        expect(wrapper.find('h1').text()).toBe('Counter')
+        expect(wrapper.find('.card-header').text()).toContain('Counter')
     })
 
     it('displays the initial count and double value', () => {

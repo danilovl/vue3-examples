@@ -1,73 +1,54 @@
 <template>
-    <div class="mb-20">
-        <h1>{{ meta.title }}</h1>
-    </div>
-    <div class="row justify-content-center">
-        <div class="col-md-4">
-            <form>
-                <div class="form-group">
-                    <label for="name">Full name</label>
-                    <input
-                        type="text"
-                        id="name"
-                        class="form-control"
-                        :class="fieldValidationClass('name')"
+    <div class="row">
+        <div class="col-md-12">
+            <app-card :title="meta.title">
+                <form @submit.prevent>
+                    <app-input
                         v-model="address.name"
+                        label="Full name"
+                        placeholder="Enter your full name"
+                        :error="startTyping.name ? addressErrorMessage.name : ''"
                     />
-                    <div>{{ addressErrorMessage.name }}</div>
-                </div>
-                <br>
-                <div class="form-group">
-                    <label for="addressLine">Address</label>
-                    <input
-                        type="text"
-                        id="addressLine"
-                        class="form-control"
-                        :class="fieldValidationClass('addressLine')"
+
+                    <app-input
                         v-model="address.addressLine"
+                        label="Address"
+                        placeholder="Street, house, apt"
+                        :error="startTyping.addressLine ? addressErrorMessage.addressLine : ''"
                     />
-                    <div>{{ addressErrorMessage.addressLine }}</div>
-                </div>
-                <br>
-                <div class="form-group">
-                    <label for="streetNumber">Street</label>
-                    <input
-                        type="text"
-                        id="streetNumber"
-                        class="form-control"
-                        :class="fieldValidationClass('streetNumber')"
+
+                    <app-input
                         v-model="address.streetNumber"
+                        label="Street"
+                        placeholder="Street name"
+                        :error="startTyping.streetNumber ? addressErrorMessage.streetNumber : ''"
                     />
-                    <div>{{ addressErrorMessage.streetNumber }}</div>
-                </div>
-                <br>
-                <div class="form-group">
-                    <label for="town">Town</label>
-                    <input
-                        type="text"
-                        id="town"
-                        class="form-control"
-                        :class="fieldValidationClass('town')"
+
+                    <app-input
                         v-model="address.town"
+                        label="Town"
+                        placeholder="Your city"
+                        :error="startTyping.town ? addressErrorMessage.town : ''"
                     />
-                    <div>{{ addressErrorMessage.town }}</div>
-                </div>
-                <br>
-                <div class="form-group">
-                    <label for="homeAddress">is home address</label>
-                    <input
-                        type="checkbox"
-                        id="homeAddress"
-                        class="form-control"
-                        v-model="address.homeAddress"
-                    />
-                </div>
-            </form>
+
+                    <div class="custom-control">
+                        <input
+                            type="checkbox"
+                            id="homeAddress"
+                            class="custom-control-input"
+                            v-model="address.homeAddress"
+                        />
+                        <label class="custom-control-label" for="homeAddress">Is home address</label>
+                    </div>
+                </form>
+            </app-card>
         </div>
     </div>
-    <div class="row justify-content-center" v-if="isFormValid()">
-        <div class="col-4">
-            <pre :style="{ 'text-align': 'left' }">{{ JSON.stringify(address, null, 2) }}</pre>
+    <div class="row" v-if="isFormValid()">
+        <div class="col-md-12">
+            <app-card title="Form Data (JSON)">
+                <pre>{{ JSON.stringify(address, null, 2) }}</pre>
+            </app-card>
         </div>
     </div>
 </template>
@@ -77,6 +58,8 @@ import type {Ref} from 'vue'
 import {reactive, watch} from 'vue'
 import {useField} from 'vee-validate'
 import useRouteMeta from '@/hook/useRouteMeta'
+import AppCard from '@/component/AppCard.vue'
+import AppInput from '@/component/AppInput.vue'
 
 interface Address {
     name: string | null;
@@ -175,13 +158,6 @@ const addressErrorMessage = reactive<AddressErrorMessageRef>({
     town: errorMessageTown,
 }) as AddressErrorMessage
 
-const fieldValidationClass = (type: string): string | null => {
-    if (!startTyping[type]) {
-        return null
-    }
-
-    return addressErrorMessage[type] === undefined ? 'is-valid' : 'is-invalid'
-}
 
 const isFormValid = (): boolean => {
     for (const field in addressErrorMessage) {

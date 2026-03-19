@@ -1,28 +1,39 @@
 <template>
-    <div class="col-md-12">
-        <div class="mb-20">
-            <h1>{{ meta.title }}</h1>
-        </div>
-        <div class="card mb-4 box-shadow">
-            <p>
-                <span v-t="'greeting'"></span>
-            </p>
-            <p>
-                <span v-t="'farewell'"></span>
-            </p>
-        </div>
-        <div class="card mb-4 box-shadow">
-            <p>
-                <button @click="showTranslatedQuestion">{{ $translate('show_question') }}</button>
-            </p>
-            <p>
-                <input type="text" v-t-input="{ key: 'instruction' }"/>
-            </p>
-        </div>
-        <div class="card mb-4 box-shadow">
-            <p>
-                <span>{{ $translate('statement') }}</span>
-            </p>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card mb-4">
+                <h5 class="card-header">{{ meta.title }}</h5>
+                <div class="card-body">
+                    <div class="mb-4">
+                        <h6>Directives (v-t)</h6>
+                        <div class="p-3 bg-light rounded">
+                            <p class="mb-1"><span v-t="'greeting'"></span></p>
+                            <p class="mb-0"><span v-t="'farewell'"></span></p>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <h6>Function call ($translate)</h6>
+                        <button class="btn btn-info" @click="showTranslatedQuestion">
+                            {{ $translate('show_question') }}
+                        </button>
+                    </div>
+
+                    <div class="mb-4">
+                        <h6>Input placeholder directive</h6>
+                        <div class="form-group">
+                            <input type="text" v-t-input="{ key: 'instruction' }"/>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h6>Plain translation</h6>
+                        <p class="card-text">
+                            <strong>{{ $translate('statement') }}</strong>
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </template>

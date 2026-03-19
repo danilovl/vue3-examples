@@ -1,13 +1,16 @@
 <template>
-    <div class="mb-20">
-        <h1>{{ meta.title }}</h1>
-    </div>
-    <div class="col-md-12">
-        <div class="card mb-4 box-shadow">
-            <h5 class="card-header">Open console</h5>
-            <div class="card-body">
-                <input type="text" v-model="dataMessage" placeholder="data message"/>
-                <p>Data message is: {{ dataMessage }}</p>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card mb-4">
+                <h5 class="card-header">{{ meta.title }} - Open console</h5>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label>Try to update data and see console</label>
+                        <input type="text" v-model="dataMessage"
+                               placeholder="Type something to trigger update hooks..."/>
+                    </div>
+                    <p class="mt-3">Data message is: <strong>{{ dataMessage }}</strong></p>
+                </div>
             </div>
         </div>
     </div>

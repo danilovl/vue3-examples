@@ -1,20 +1,28 @@
 <template>
-    <div class="mb-20">
-        <h1>{{ meta.title }}</h1>
-    </div>
-    <div class="col-md-12">
-        <input
-            type="text"
-            @keydown="keyCodeEvent($event)"
-            @keyup="keyCodeEvent($event)"
-            @keypress="keyCodeEvent($event)"
-            @focus="keyCodeEvent($event)"
-            @focusout="keyCodeEvent($event)"
-        />
-    </div>
-    <div class="row justify-content-center" v-if="events.length > 0">
-        <div class="col-4">
-            <pre :style="{ 'text-align': 'left' }">{{ JSON.stringify(events, null, 2) }}</pre>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card mb-4">
+                <h5 class="card-header">{{ meta.title }}</h5>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label>Press any key inside the input</label>
+                        <input
+                            type="text"
+                            placeholder="Type here..."
+                            @keydown="keyCodeEvent($event)"
+                            @keyup="keyCodeEvent($event)"
+                            @keypress="keyCodeEvent($event)"
+                            @focus="keyCodeEvent($event)"
+                            @focusout="keyCodeEvent($event)"
+                        />
+                    </div>
+
+                    <div class="mt-4" v-if="events.length > 0">
+                        <h6>Last Event Data:</h6>
+                        <pre>{{ JSON.stringify(events, null, 2) }}</pre>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </template>

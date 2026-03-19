@@ -1,14 +1,12 @@
 <template>
     <div>
-        <p>Has published books in child component by defineProps:</p>
-        <span>{{ publishedBooksMessage }}</span>
-        <br>
-        <p>
-            <button @click="clearBooks()">clear books emit in parent component</button>
-        </p>
-        <p>
-            <button @click="createBooks()">create books emit in parent component</button>
-        </p>
+        <p class="mb-3">Has published books in child component (defineProps): <strong>{{
+                publishedBooksMessage
+            }}</strong></p>
+        <div class="d-flex gap-2">
+            <button class="btn btn-danger mr-2" @click="clearBooks()">Clear Books (Emit)</button>
+            <button class="btn btn-primary" @click="createBooks()">Restore Books (Emit)</button>
+        </div>
     </div>
 </template>
 

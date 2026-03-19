@@ -1,24 +1,24 @@
 <template>
-    <div class="mb-20">
-        <h1>{{ meta.title }}</h1>
-    </div>
-    <div class="col-md-12">
-        <div class="card mb-4 box-shadow">
-            <h5 class="card-header">Add to cart emit</h5>
-            <div class="card-body">
-                <AddToCart @addToCart='addToCart()' class="mb-2"/>
-                <p>Cart items: {{ cart.length }}</p>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card mb-4">
+                <h5 class="card-header">{{ meta.title }} - Basic Emit</h5>
+                <div class="card-body">
+                    <AddToCart @addToCart='addToCart()' class="mb-3"/>
+                    <p>Items in cart: <strong>{{ cart.length }}</strong></p>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="col-md-12">
-        <div class="card mb-4 box-shadow">
-            <h5 class="card-header">Add to cart object emit</h5>
-            <div class="card-body">
-                <AddToCartObject @addToCartObject='addToCartObject' class="mb-2"/>
-                <p>Cart object items: {{ cartObject.length }}</p>
-                <div class="col-4">
-                    <pre :style="{ 'text-align': 'left' }">{{ JSON.stringify(cartObject, null, 2) }}</pre>
+        <div class="col-md-12">
+            <div class="card mb-4">
+                <h5 class="card-header">{{ meta.title }} - Object Emit</h5>
+                <div class="card-body">
+                    <AddToCartObject @addToCartObject='addToCartObject' class="mb-3"/>
+                    <p class="mb-3">Items in cart: <strong>{{ cartObject.length }}</strong></p>
+                    <div v-if="cartObject.length > 0">
+                        <h6>Cart Data:</h6>
+                        <pre>{{ JSON.stringify(cartObject, null, 2) }}</pre>
+                    </div>
                 </div>
             </div>
         </div>

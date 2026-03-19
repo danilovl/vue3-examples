@@ -1,21 +1,19 @@
 <template>
-    <form>
+    <form @submit.prevent>
         <div class="form-group">
             <label for="name">Full name</label>
             <input
                 type="text"
                 id="name"
-                class="form-control"
                 :value="props.name"
                 @input="$emit('update:name', $event.target.value)"
             />
         </div>
         <div class="form-group">
-            <label for="name">Country</label>
+            <label for="country">Country</label>
             <input
                 type="text"
                 id="country"
-                class="form-control"
                 :value="props.country"
                 @input="$emit('update:country', $event.target.value)"
             />
@@ -25,7 +23,6 @@
             <input
                 type="text"
                 id="addressLine"
-                class="form-control"
                 :value="props.addressLine"
                 @input="$emit('update:addressLine', $event.target.value)"
             />
@@ -35,7 +32,6 @@
             <input
                 type="text"
                 id="streetNumber"
-                class="form-control"
                 :value="streetNumber"
                 @input="$emit('update:streetNumber', $event.target.value)"
             />
@@ -45,20 +41,19 @@
             <input
                 type="text"
                 id="town"
-                class="form-control"
                 :value="props.town"
                 @input="$emit('update:town', $event.target.value)"
             />
         </div>
-        <div class="form-group">
-            <label for="homeAddress">is home address</label>
+        <div class="custom-control">
             <input
                 type="checkbox"
                 id="homeAddress"
-                class="form-control"
-                :value="props.homeAddress"
+                class="custom-control-input"
+                :checked="props.homeAddress"
                 @change="$emit('update:homeAddress', $event.target.checked)"
             />
+            <label class="custom-control-label" for="homeAddress">is home address</label>
         </div>
     </form>
 </template>

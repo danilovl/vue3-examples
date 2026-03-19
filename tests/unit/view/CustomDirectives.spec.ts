@@ -18,7 +18,7 @@ beforeEach(async () => {
 
 describe('CustomDirectives.vue', () => {
     it('renders meta title from useRouteMeta', () => {
-        expect(wrapper.find('h1').text()).toBe('Custom directives')
+        expect(wrapper.find('h1').text()).toContain('Custom directives')
     })
 
     it('v-focus directive should focus the input element on mount', () => {

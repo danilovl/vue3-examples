@@ -1,10 +1,17 @@
 <template>
-    <div class="mb-20">
-        <h1>{{ meta.title }}</h1>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <h5 class="card-header">{{ meta.title }}</h5>
+                <div class="card-body text-center">
+                    <p class="card-text">Current count value and its double</p>
+                    <button class="btn btn-primary" @click="increment">
+                        Count is: {{ state.count }}, double is: {{ state.double }}
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
-    <button @click="increment">
-        Count is: {{ state.count }}, double is: {{ state.double }}
-    </button>
 </template>
 
 <script setup lang="ts">

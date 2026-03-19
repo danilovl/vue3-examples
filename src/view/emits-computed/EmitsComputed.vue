@@ -1,22 +1,19 @@
 <template>
-    <div class="mb-20">
-        <h1>{{ meta.title }}</h1>
-    </div>
-    <div class="col-md-12">
-        <div class="card mb-4 box-shadow">
-            <p>Has published books in parent component:</p>
-            <span>{{ publishedBooksMessage }}</span>
-        </div>
-    </div>
-    <div class="col-md-12">
-        <div class="card mb-4 box-shadow">
-            <div class="card-body">
-                <author-book
-                    @clearBooks="clearBooks"
-                    @createBooks="createBooks"
-                    :author="author"
-                    class="mb-2"
-                />
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card mb-4">
+                <h5 class="card-header">{{ meta.title }}</h5>
+                <div class="card-body">
+                    <p class="mb-3">Has published books in parent component: <strong>{{
+                            publishedBooksMessage
+                        }}</strong></p>
+                    <hr class="mb-4"/>
+                    <author-book
+                        @clearBooks="clearBooks"
+                        @createBooks="createBooks"
+                        :author="author"
+                    />
+                </div>
             </div>
         </div>
     </div>

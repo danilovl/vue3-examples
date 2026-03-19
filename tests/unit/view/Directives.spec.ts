@@ -18,7 +18,7 @@ beforeEach(async () => {
 
 describe('Directives.vue', () => {
     it('renders meta title from useRouteMeta', () => {
-        expect(wrapper.find('h1').text()).toBe('Directives')
+        expect(wrapper.find('.card-header').text()).toContain('Directives')
     })
 
     it('v-once: initial message renders and doesnt update on change', async () => {
@@ -35,7 +35,7 @@ describe('Directives.vue', () => {
 
         await wrapper.find('#update-message').trigger('click')
 
-        const currentStateMessageUpdate = wrapper.find('p:nth-of-type(4)').text()
+        const currentStateMessageUpdate = wrapper.find('#current-state-message').text()
         expect(currentStateMessageUpdate).toBe('hello world count click: 1')
     })
 })

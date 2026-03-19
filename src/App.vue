@@ -2,17 +2,15 @@
     <nav-bar/>
 
     <main class="content">
-        <router-view/>
+        <error-boundary>
+            <router-view/>
+        </error-boundary>
     </main>
+    <app-toast/>
 </template>
 
-<script lang="ts">
-import {defineComponent} from 'vue'
+<script setup lang="ts">
 import NavBar from '@/component/Navbar.vue'
-
-export default defineComponent({
-    components: {
-        NavBar
-    }
-})
+import AppToast from '@/component/AppToast.vue'
+import ErrorBoundary from '@/component/ErrorBoundary.vue'
 </script>

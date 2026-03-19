@@ -1,5 +1,7 @@
 <template>
-    <back-link text="back to todo list" route-name="todo_list"/>
+    <div class="mb-3">
+        <back-link text="Back to task list" route-name="todo_list"/>
+    </div>
     <div class="row">
         <todo-item :todo="todo" :show-detail-btn="false" :show-delete-btn="false"/>
     </div>

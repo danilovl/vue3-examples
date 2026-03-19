@@ -1,7 +1,7 @@
 <template>
     <div class="hello">
-        <h1>{{ message }}</h1>
-        <p>{{ description }}</p>
+        <h1 class="mb-3">{{ message }}</h1>
+        <p class="card-text" style="font-size: 1.2rem;">{{ description }}</p>
     </div>
 </template>
 

@@ -214,7 +214,7 @@ const routes: Array<RouteRecordRaw> = [
             title: 'Emits'
         },
         component: (): Promise<any> => import('@/view/emits/Emits.vue')
-    } ,
+    },
     {
         path: '/emits-computed',
         name: 'emits_computed',
@@ -294,6 +294,36 @@ const routes: Array<RouteRecordRaw> = [
             title: 'Watchers'
         },
         component: (): Promise<any> => import('@/view/Watchers.vue')
+    },
+    {
+        path: '/advanced/async-suspense',
+        name: 'advanced_async_suspense',
+        meta: {
+            position: 24,
+            display: true,
+            title: 'Async Suspense'
+        },
+        component: (): Promise<any> => import('@/view/advanced/AsyncSuspense.vue')
+    },
+    {
+        path: '/advanced/dynamic-form',
+        name: 'advanced_dynamic_form',
+        meta: {
+            position: 25,
+            display: true,
+            title: 'Dynamic Form'
+        },
+        component: (): Promise<any> => import('@/view/advanced/DynamicForm.vue')
+    },
+    {
+        path: '/advanced/vue-next',
+        name: 'advanced_vue_next',
+        meta: {
+            position: 26,
+            display: true,
+            title: 'Vue 3.5 Features'
+        },
+        component: (): Promise<any> => import('@/view/advanced/VueNext.vue')
     }
 ]
 

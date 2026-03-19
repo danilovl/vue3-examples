@@ -1,23 +1,27 @@
 <template>
-    <div class="mb-20">
-        <h1>{{ meta.title }}</h1>
-    </div>
-    <div class="row justify-content-center">
-        <div class="col-md-4">
-            <form-models
-                v-model:name="address.name"
-                v-model:country="address.country"
-                v-model:addressLine="address.addressLine"
-                v-model:streetNumber="address.streetNumber"
-                v-model:town="address.town"
-                v-model:homeAddress="address.homeAddress"
-            />
-        </div>
-    </div>
-    <hr/>
-    <div class="row justify-content-center">
-        <div class="col-4">
-            <pre :style="{ 'text-align': 'left' }">{{ JSON.stringify(address, null, 2) }}</pre>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card mb-4">
+                <h5 class="card-header">{{ meta.title }}</h5>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <form-models
+                                v-model:name="address.name"
+                                v-model:country="address.country"
+                                v-model:addressLine="address.addressLine"
+                                v-model:streetNumber="address.streetNumber"
+                                v-model:town="address.town"
+                                v-model:homeAddress="address.homeAddress"
+                            />
+                        </div>
+                        <div class="col-md-6">
+                            <h6>Address Data (JSON):</h6>
+                            <pre>{{ JSON.stringify(address, null, 2) }}</pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </template>

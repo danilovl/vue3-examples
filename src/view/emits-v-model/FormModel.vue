@@ -1,11 +1,10 @@
 <template>
-    <form>
+    <form @submit.prevent>
         <div class="form-group">
             <label for="name">Full name</label>
             <input
                 type="text"
                 id="name"
-                class="form-control"
                 v-model="name"
             />
         </div>
@@ -14,7 +13,6 @@
             <input
                 type="text"
                 id="addressLine"
-                class="form-control"
                 v-model="addressLine"
             />
         </div>
@@ -23,7 +21,6 @@
             <input
                 type="text"
                 id="streetNumber"
-                class="form-control"
                 v-model="streetNumber"
             />
         </div>
@@ -32,7 +29,6 @@
             <input
                 type="text"
                 id="town"
-                class="form-control"
                 v-model="town"
             />
         </div>
@@ -41,18 +37,17 @@
             <input
                 type="text"
                 id="country"
-                class="form-control"
                 v-model="country"
             />
         </div>
-        <div class="form-group">
-            <label for="homeAddress">is home address</label>
+        <div class="custom-control">
             <input
                 type="checkbox"
                 id="homeAddress"
-                class="form-control"
+                class="custom-control-input"
                 v-model="homeAddress"
             />
+            <label class="custom-control-label" for="homeAddress">is home address</label>
         </div>
     </form>
 </template>

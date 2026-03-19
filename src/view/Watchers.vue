@@ -1,92 +1,110 @@
 <template>
-    <div class="task-manager">
-        <h1>Task Manager</h1>
-        <ul class="task-messages">
-            <li v-for="(message, index) in taskMessages"
-                :key="index">
-                {{ message }}
-            </li>
-        </ul>
-        <ul class="settings-messages">
-            <li v-for="(message, index) in settingsMessages"
-                :key="index">
-                {{ message }}
-            </li>
-        </ul>
-        <div class="task-input">
-            <input v-model="newTaskTitle" placeholder="Enter task title"/>
-            <select v-model="newTaskCategory">
-                <option v-for="category in categories"
-                        :key="category"
-                        :value="category">
-                    {{ category }}
-                </option>
-            </select>
-            <button @click="addTask">Add Task</button>
-        </div>
-        <button class="manage-categories" @click="toggleCategoryManagement">
-            {{ showCategoryManagement ? 'Hide Categories' : 'Manage Categories' }}
-        </button>
-        <div v-if="showCategoryManagement" class="category-management">
-            <div class="category-input">
-                <input v-model="newCategory" placeholder="Enter new category"/>
-                <button @click="addCategory">Add Category</button>
-            </div>
-            <ul class="category-list">
-                <li v-for="category in categories" :key="category">
-                    <div class="category-text">
-                        <input v-model="editCategoryValue"
-                               placeholder="Edit category"
-                               v-if="editingCategory === category"
-                        />
-                        <span v-else>{{ category }}</span>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card mb-4">
+                <h5 class="card-header">Task Manager (Watchers)</h5>
+                <div class="card-body">
+                    <div class="task-manager">
+                        <ul class="task-messages">
+                            <li v-for="(message, index) in taskMessages"
+                                :key="index">
+                                {{ message }}
+                            </li>
+                        </ul>
+                        <ul class="settings-messages">
+                            <li v-for="(message, index) in settingsMessages"
+                                :key="index">
+                                {{ message }}
+                            </li>
+                        </ul>
+                        <div class="task-input mb-4">
+                            <input v-model="newTaskTitle" placeholder="Enter task title" class="mr-2"/>
+                            <select v-model="newTaskCategory" class="mr-2">
+                                <option v-for="category in categories"
+                                        :key="category"
+                                        :value="category">
+                                    {{ category }}
+                                </option>
+                            </select>
+                            <button @click="addTask" class="btn btn-primary">Add Task</button>
+                        </div>
+                        <button class="btn btn-outline mb-4" @click="toggleCategoryManagement">
+                            {{ showCategoryManagement ? 'Hide Categories' : 'Manage Categories' }}
+                        </button>
+                        <div v-if="showCategoryManagement" class="category-management mb-4">
+                            <div class="category-input mb-3">
+                                <input v-model="newCategory" placeholder="Enter new category" class="mr-2"/>
+                                <button @click="addCategory" class="btn btn-info">Add Category</button>
+                            </div>
+                            <ul class="category-list">
+                                <li v-for="category in categories" :key="category">
+                                    <div class="category-text">
+                                        <input v-model="editCategoryValue"
+                                               placeholder="Edit category"
+                                               v-if="editingCategory === category"
+                                               class="mr-2"
+                                        />
+                                        <span v-else>{{ category }}</span>
+                                    </div>
+                                    <div class="category-buttons">
+                                        <button class="btn btn-warning mr-2" @click="startEditCategory(category)"
+                                                v-if="editingCategory !== category">Edit
+                                        </button>
+                                        <button class="btn btn-primary mr-2" @click="saveEditCategory(category)"
+                                                v-if="editingCategory === category">Save
+                                        </button>
+                                        <button class="btn btn-danger" @click="deleteCategory(category)">Delete</button>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="controls mb-4">
+                            <div class="form-group">
+                                <label>Filter by category:</label>
+                                <select v-model="filterCategory">
+                                    <option value="All">All Categories</option>
+                                    <option v-for="category in categories"
+                                            :key="category"
+                                            :value="category">
+                                        {{ category }}
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="custom-control">
+                                <input type="checkbox" v-model="userSettings.autoSave" id="auto-save"
+                                       class="custom-control-input"/>
+                                <label for="auto-save" class="custom-control-label">Auto-save changes</label>
+                            </div>
+                        </div>
+                        <p class="stats mb-3">{{ taskStats }}</p>
+                        <ul class="task-list">
+                            <li v-for="task in filteredTasks"
+                                :key="task.id"
+                                :class="{ completed: task.completed }"
+                            >
+                                <div class="task-content">
+                                    <input type="checkbox"
+                                           :checked="task.completed"
+                                           @change="toggleTaskCompletion(task.id)"
+                                           class="custom-control-input"
+                                    />
+                                    <span>{{ task.title }} ({{ task.category }})</span>
+                                </div>
+                                <button class="btn btn-danger" @click="removeTask(task.id)">Delete</button>
+                            </li>
+                        </ul>
+                        <div v-if="showModal" class="modal">
+                            <div class="modal-content card">
+                                <div class="card-body">
+                                    <p class="mb-4">Tasks and categories found in localStorage. Load them or start
+                                        fresh?</p>
+                                    <button class="btn btn-primary mr-2" @click="loadFromStorage">Load Data</button>
+                                    <button class="btn btn-outline" @click="startFresh">Start Fresh</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="category-buttons">
-                        <button @click="startEditCategory(category)" v-if="editingCategory !== category">Edit</button>
-                        <button @click="saveEditCategory(category)" v-if="editingCategory === category">Save</button>
-                        <button @click="deleteCategory(category)">Delete</button>
-                    </div>
-                </li>
-            </ul>
-        </div>
-        <div class="controls">
-            <label>
-                Filter by category:
-                <select v-model="filterCategory">
-                    <option value="All">All</option>
-                    <option v-for="category in categories"
-                            :key="category"
-                            :value="category">
-                        {{ category }}
-                    </option>
-                </select>
-            </label>
-            <label>
-                Auto-save:
-                <input type="checkbox" v-model="userSettings.autoSave"/>
-            </label>
-        </div>
-        <p class="stats">{{ taskStats }}</p>
-        <ul class="task-list">
-            <li v-for="task in filteredTasks"
-                :key="task.id"
-                :class="{ completed: task.completed }"
-            >
-                <div class="task-content">
-                    <input type="checkbox"
-                           :checked="task.completed"
-                           @change="toggleTaskCompletion(task.id)"
-                    />
-                    <span>{{ task.title }} ({{ task.category }})</span>
                 </div>
-                <button @click="removeTask(task.id)">Delete</button>
-            </li>
-        </ul>
-        <div v-if="showModal" class="modal">
-            <div class="modal-content">
-                <p>Tasks and categories found in localStorage. Load them or start fresh?</p>
-                <button @click="loadFromStorage">Load Data</button>
-                <button @click="startFresh">Start Fresh</button>
             </div>
         </div>
     </div>
@@ -172,7 +190,7 @@ watch(tasks, (newTasks, oldTasks) => {
     }
 }, {deep: true})
 
-watch([newTaskTitle, newTaskCategory], ([newTitle, newCategory], [oldTitle, oldCategory]) => {
+watch([newTaskTitle, newTaskCategory], ([newTitle, newCategory], [_oldTitle, oldCategory]) => {
     if (newTitle && newCategory !== oldCategory) {
         addMessage(taskMessages.value, `New task category changed to ${newCategory}`)
     }
@@ -308,211 +326,3 @@ function startFresh() {
     showModal.value = false
 }
 </script>
-
-<style scoped>
-.task-manager {
-    max-width: 700px;
-    margin: 0 auto;
-    padding: 20px;
-    font-family: Arial, sans-serif;
-}
-
-h1 {
-    text-align: center;
-    color: #2c3e50;
-}
-
-.task-messages,
-.settings-messages {
-    list-style: none;
-    padding: 0;
-    text-align: center;
-    min-height: 20px;
-}
-
-.task-messages li {
-    color: #e74c3c;
-}
-
-.settings-messages {
-    margin-bottom: 10px;
-}
-
-.settings-messages li {
-    color: #3498db;
-}
-
-.task-input {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
-}
-
-.manage-categories {
-    display: block;
-    width: 100%;
-    padding: 8px;
-    font-size: 16px;
-    background-color: #2ecc71;
-    color: white;
-    border: none;
-    cursor: pointer;
-    margin-bottom: 20px;
-}
-
-.manage-categories:hover {
-    background-color: #27ae60;
-}
-
-.category-management {
-    margin-bottom: 20px;
-}
-
-.category-input {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
-}
-
-.task-input input,
-.task-input select,
-.task-input button,
-.category-input input,
-.category-input button {
-    padding: 8px;
-    font-size: 16px;
-}
-
-.task-input button,
-.category-input button {
-    background-color: #3498db;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
-
-.task-input button:hover,
-.category-input button:hover {
-    background-color: #2980b9;
-}
-
-.category-list {
-    list-style: none;
-    padding: 0;
-    margin-bottom: 20px;
-}
-
-.category-list li {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 5px;
-}
-
-.category-buttons {
-    display: flex;
-    gap: 10px;
-}
-
-.category-text {
-    display: flex;
-    align-items: center;
-}
-
-.category-list button {
-    padding: 5px 10px;
-    cursor: pointer;
-}
-
-.category-list button:first-child {
-    background-color: #f1c40f;
-    color: black;
-}
-
-.category-list button:first-child:hover {
-    background-color: #e1b12c;
-}
-
-.category-list button:last-child {
-    background-color: #e74c3c;
-    color: white;
-}
-
-.category-list button:last-child:hover {
-    background-color: #c0392b;
-}
-
-.controls {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-}
-
-.stats {
-    font-weight: bold;
-    color: #2c3e50;
-}
-
-.task-list {
-    list-style: none;
-    padding: 0;
-}
-
-.task-list li {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px;
-    border-bottom: 1px solid #ecf0f1;
-}
-
-.task-content {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.task-list li.completed span {
-    text-decoration: line-through;
-    color: #7f8c8d;
-}
-
-.task-list button {
-    background-color: #e74c3c;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    width: 80px;
-    text-align: center;
-}
-
-.task-list button:hover {
-    background-color: #c0392b;
-}
-
-.modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.modal-content {
-    background: white;
-    padding: 20px;
-    border-radius: 5px;
-    text-align: center;
-}
-
-.modal-content button {
-    margin: 10px;
-    padding: 8px 16px;
-    cursor: pointer;
-}
-</style>

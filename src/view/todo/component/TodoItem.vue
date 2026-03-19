@@ -1,11 +1,11 @@
 <template>
     <div class="col-md-12">
-        <div class="card mb-4 box-shadow" :class="todoCardClass">
+        <div class="card mb-4" :class="todoCardClass">
             <h5 class="card-header" :class="{done: props.todo.done}">{{ props.todo.title }}</h5>
 
             <div class="card-body">
                 <p class="card-text">{{ props.todo.description }}</p>
-                <div class="custom-control custom-checkbox mb-1">
+                <div class="custom-control mb-3">
                     <input type="checkbox"
                            class="custom-control-input"
                            :id="'customCheck' + props.todo.id"
@@ -14,29 +14,33 @@
                     <label class="custom-control-label" :for="'customCheck' + props.todo.id">done</label>
                 </div>
 
-                <router-link
-                    class="btn btn-primary mr-2"
-                    v-if="props.showDetailBtn"
-                    :to="{name: 'todo_detail', params: { id: props.todo.id }}"
-                >
-                    detail
-                </router-link>
+                <div class="row">
+                    <div class="col-md-12">
+                        <router-link
+                            class="btn btn-primary mr-2"
+                            v-if="props.showDetailBtn"
+                            :to="{name: 'todo_detail', params: { id: props.todo.id }}"
+                        >
+                            detail
+                        </router-link>
 
-                <router-link
-                    class="btn btn-warning mr-2"
-                    v-if="props.showEditBtn"
-                    :to="{name: 'todo_edit', params: { id: props.todo.id }}"
-                >
-                    edit
-                </router-link>
+                        <router-link
+                            class="btn btn-warning mr-2"
+                            v-if="props.showEditBtn"
+                            :to="{name: 'todo_edit', params: { id: props.todo.id }}"
+                        >
+                            edit
+                        </router-link>
 
-                <a href="#"
-                   class="btn btn-danger"
-                   v-if="props.showDeleteBtn"
-                   @click.prevent="removeTodo(props.todo.id)"
-                >
-                    delete
-                </a>
+                        <a href="#"
+                           class="btn btn-danger"
+                           v-if="props.showDeleteBtn"
+                           @click.prevent="removeTodo(props.todo.id)"
+                        >
+                            delete
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

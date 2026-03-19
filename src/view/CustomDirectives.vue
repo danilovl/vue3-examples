@@ -28,14 +28,14 @@ const vFocus = {
 }
 
 const vAttribute = {
-    mounted: (element: HTMLInputElement, binding: Object): void => {
+    mounted: (element: HTMLInputElement, binding: object): void => {
         element.id = binding.value.id
         element.value = binding.value.text
     }
 }
 
 const vAlert = {
-    mounted: (element: HTMLInputElement, binding: Object): void => {
+    mounted: (element: HTMLInputElement, binding: object): void => {
         element.addEventListener('click', (): void => {
             alert(binding.value)
         })

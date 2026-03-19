@@ -18,7 +18,7 @@ beforeEach(async () => {
 
 describe('KeyCode.vue', () => {
     it('renders meta title from useRouteMeta', () => {
-        expect(wrapper.find('h1').text()).toBe('Key code')
+        expect(wrapper.find('.card-header').text()).toContain('Key code')
     })
 
     it('captures keydown event and updates the events array', async () => {

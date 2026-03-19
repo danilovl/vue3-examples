@@ -1,24 +1,22 @@
 <template>
-    <div class="mb-20">
-        <h1>{{ meta.title }}</h1>
-    </div>
-    <div class="col-md-12">
-        <div class="card mb-4 box-shadow">
-            <h5 class="card-header">Axios</h5>
-            <div class="card-body" v-if="isLoading === true">
-                <p>
-                    <a :href="apiUrl" class="href" id="loading-from-here">Loading from here</a>
-                </p>
-                <p id="process-information">
-                    Process: {{ processInformation }}
-                </p>
-            </div>
-            <div id="todos-list" class="card-body" v-else>
-                <h2>Fake online REST API data</h2>
-                <p v-for="todo in todos" :key="todo.title">
-                    {{ $filters.capitalizeFirstLetter(todo.title) }}
-                </p>
-            </div>
+    <div class="row">
+        <div class="col-md-12">
+            <app-card :title="meta.title">
+                <div v-if="isLoading">
+                    <div v-for="i in 5" :key="i" class="mb-3">
+                        <app-skeleton height="24px" width="80%"/>
+                    </div>
+                    <p class="text-muted mt-3 small">
+                        Process: {{ processInformation }}
+                    </p>
+                </div>
+                <div id="todos-list" v-else>
+                    <h2 class="mb-3">Fake online REST API data</h2>
+                    <p v-for="todo in (todos as any)" :key="todo.title" class="mb-2">
+                        {{ $filters.capitalizeFirstLetter(todo.title) }}
+                    </p>
+                </div>
+            </app-card>
         </div>
     </div>
 </template>
@@ -30,6 +28,8 @@ import axios from 'axios'
 import {sleep} from '@/helper'
 import apiUrlConstant from '@/constant/api'
 import useRouteMeta from '@/hook/useRouteMeta'
+import AppCard from '@/component/AppCard.vue'
+import AppSkeleton from '@/component/AppSkeleton.vue'
 
 const apiUrl = apiUrlConstant.apiTodoUrl
 const isLoading = ref<boolean>(true)

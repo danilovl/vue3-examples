@@ -1,25 +1,33 @@
 <template>
-    <div class="col-md-12">
-        <div class="mb-20">
-            <h1>{{ meta.title }}</h1>
-        </div>
-        <div class="card mb-4 box-shadow">
-            <h5 id="global-title" class="card-header">{{ texts.global.title }}</h5>
-            <div id="filter-global-title" class="card-body">
-                {{ texts.global.text }} => {{ $filters.capitalizeFirstLetter(texts.global.text) }}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card mb-4">
+                <h5 id="global-title" class="card-header">{{ texts.global.title }}</h5>
+                <div id="filter-global-title" class="card-body">
+                    <p class="card-text">
+                        Original: <strong>{{ texts.global.text }}</strong>
+                    </p>
+                    <p>
+                        Filtered: <strong>{{ $filters.capitalizeFirstLetter(texts.global.text) }}</strong>
+                    </p>
+                </div>
             </div>
-        </div>
-        <div class="card mb-4 box-shadow">
-            <h5 id="local-title" class="card-header">{{ texts.local.title }}</h5>
-            <div id="filter-local-title" class="card-body">
-                {{ texts.local.text }} => {{ toUpperCase(texts.local.text) }}
+            <div class="card mb-4">
+                <h5 id="local-title" class="card-header">{{ texts.local.title }}</h5>
+                <div id="filter-local-title" class="card-body">
+                    <p class="card-text">
+                        Original: <strong>{{ texts.local.text }}</strong>
+                    </p>
+                    <p>
+                        Filtered: <strong>{{ toUpperCase(texts.local.text) }}</strong>
+                    </p>
+                </div>
             </div>
         </div>
     </div>
 </template>
 
 <script setup lang="ts">
-import useRouteMeta from '@/hook/useRouteMeta'
 
 const texts = {
     global: {
@@ -33,5 +41,4 @@ const texts = {
 }
 
 const toUpperCase = (string: string): string => string.toUpperCase()
-const meta = useRouteMeta()
 </script>
